@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "UserManegment";
+}
+
+<h2>UserManegment</h2>
+
+@(
+ Html.Kendo().Grid<PCDCRSystem.Models.Users_Table>()
+   .Name("UsersGrid")
+   .Columns(c =>
+   {
+       c.Bound(p => p.ID);
+       c.Bound(p => p.UserName);
+       c.Bound(p => p.Password);
+       c.Bound(p => p.FullName);
+       c.Bound(p => p.UserAddress);
+       c.Bound(p => p.Status);
+       c.Command(
+           cmd =>
+           {
+               cmd.Edit();
+               cmd.Destroy();
+
+           });
+
+   })
+           .Excel(excel => excel
+            .FileName("Kendo UI Grid Export.xlsx")
+            .Filterable(true)
+                .ProxyURL(Url.Action("TheUsers", "Users"))
+        )
+     .DataSource(
+                datasource => datasource.Ajax()
+                    .Read(read => read.Action("TheUsers", "Users"))
+                          .Create(c => c.Action("Create_User", "Users"))
+                            .Update(u => u.Action("Update_User", "Users"))
+                                  .Destroy(d => d.Action("Delete_User", "Users"))
+
+                      .Model(m => { m.Id(p => p.ID); })
+
+         )
+       .Groupable()
+       .Sortable()
+       .Selectable()
+       .Filterable()
+       .Editable(e => e.Mode(GridEditMode.PopUp))
+       .Pageable
+              (p =>
+                  p.Refresh(true)
+                   .PageSizes(true)
+                   .PreviousNext(true)
+         )
+             .ToolBar(t => t.Excel())
+                   .ToolBar(t => t.Create())
+)

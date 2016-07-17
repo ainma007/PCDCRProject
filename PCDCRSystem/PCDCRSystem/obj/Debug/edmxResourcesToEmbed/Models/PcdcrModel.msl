@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PCDCRModelStoreContainer" CdmEntityContainer="PCDCREntities">
+    <EntitySetMapping Name="ActivitiesCategory_Table">
+      <EntityTypeMapping TypeName="PCDCRModel.ActivitiesCategory_Table">
+        <MappingFragment StoreEntitySet="ActivitiesCategory_Table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ActivitiesCategoryName" ColumnName="ActivitiesCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityPeopleCategory_Table">
+      <EntityTypeMapping TypeName="PCDCRModel.ActivityPeopleCategory_Table">
+        <MappingFragment StoreEntitySet="ActivityPeopleCategory_Table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City_Table">
+      <EntityTypeMapping TypeName="PCDCRModel.City_Table">
+        <MappingFragment StoreEntitySet="City_Table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Corporation_Table">
+      <EntityTypeMapping TypeName="PCDCRModel.Corporation_Table">
+        <MappingFragment StoreEntitySet="Corporation_Table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CorporationName" ColumnName="CorporationName" />
+          <ScalarProperty Name="CorporationPhone" ColumnName="CorporationPhone" />
+          <ScalarProperty Name="CorporationAddress" ColumnName="CorporationAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Programs_Table">
+      <EntityTypeMapping TypeName="PCDCRModel.Programs_Table">
+        <MappingFragment StoreEntitySet="Programs_Table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectActivities_Table">
+      <EntityTypeMapping TypeName="PCDCRModel.ProjectActivities_Table">
+        <MappingFragment StoreEntitySet="ProjectActivities_Table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Srarttime" ColumnName="Srarttime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="ActivitiesCategoryID" ColumnName="ActivitiesCategoryID" />
+          <ScalarProperty Name="ActivityPeopleCategory" ColumnName="ActivityPeopleCategory" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="CorporationID" ColumnName="CorporationID" />
+          <ScalarProperty Name="ActivatorName" ColumnName="ActivatorName" />
+          <ScalarProperty Name="ActivatorMobil" ColumnName="ActivatorMobil" />
+          <ScalarProperty Name="CorporationContactRing" ColumnName="CorporationContactRing" />
+          <ScalarProperty Name="CorporationPhone" ColumnName="CorporationPhone" />
+          <ScalarProperty Name="TotalPresence" ColumnName="TotalPresence" />
+          <ScalarProperty Name="TotalMale" ColumnName="TotalMale" />
+          <ScalarProperty Name="TotlFemal" ColumnName="TotlFemal" />
+          <ScalarProperty Name="Emergency_Intervention" ColumnName="Emergency_Intervention" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="SaturdayDay" ColumnName="SaturdayDay" />
+          <ScalarProperty Name="SundayDay" ColumnName="SundayDay" />
+          <ScalarProperty Name="MondayDay" ColumnName="MondayDay" />
+          <ScalarProperty Name="tuesdayDay" ColumnName="tuesdayDay" />
+          <ScalarProperty Name="wednesdayDay" ColumnName="wednesdayDay" />
+          <ScalarProperty Name="thursdayDay" ColumnName="thursdayDay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectControl">
+      <EntityTypeMapping TypeName="PCDCRModel.ProjectControl">
+        <MappingFragment StoreEntitySet="ProjectControl">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects_table">
+      <EntityTypeMapping TypeName="PCDCRModel.Projects_table">
+        <MappingFragment StoreEntitySet="Projects_table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ProjectStatus" ColumnName="ProjectStatus" />
+          <ScalarProperty Name="ProgrameID" ColumnName="ProgrameID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Province_Table">
+      <EntityTypeMapping TypeName="PCDCRModel.Province_Table">
+        <MappingFragment StoreEntitySet="Province_Table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PCDCRModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_Table">
+      <EntityTypeMapping TypeName="PCDCRModel.Users_Table">
+        <MappingFragment StoreEntitySet="Users_Table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "ProjectManagement";
+}
+
+<h2>ProjectManagement</h2>
+
+@(
+ Html.Kendo().Grid<PCDCRSystem.Models.Projects_table>()
+   .Name("UsersGrid")
+   .Columns(c =>
+   {
+       c.Bound(p => p.ID);
+       c.Bound(p => p.ProjectName);
+       c.Bound(p => p.StartDate);
+       c.Bound(p => p.EndDate);
+       c.Bound(p => p.ProjectStatus);
+       c.Bound(p => p.ProgrameID).ClientTemplate("#=Category.CategoryName#").Width(180);
+       c.Command(
+           cmd =>
+           {
+               cmd.Edit();
+               cmd.Destroy();
+
+           });
+
+   })
+           .Excel(excel => excel
+            .FileName("Kendo UI Grid Export.xlsx")
+            .Filterable(true)
+                .ProxyURL(Url.Action("AllProjects", "Project"))
+        )
+     .DataSource(
+                datasource => datasource.Ajax()
+                    .Read(read => read.Action("AllProjects", "Project"))
+                          .Create(c => c.Action("Create_Project", "Project"))
+                            .Update(u => u.Action("Update_Project", "Project"))
+                                  .Destroy(d => d.Action("Delete_Project", "Project"))
+
+                      .Model(m => { m.Id(p => p.ID); })
+
+         )
+       .Groupable()
+       .Sortable()
+       .Selectable()
+       .Filterable()
+       .Editable(e => e.Mode(GridEditMode.PopUp))
+       .Pageable
+              (p =>
+                  p.Refresh(true)
+                   .PageSizes(true)
+                   .PreviousNext(true)
+         )
+             .ToolBar(t => t.Excel())
+                   .ToolBar(t => t.Create())
+)

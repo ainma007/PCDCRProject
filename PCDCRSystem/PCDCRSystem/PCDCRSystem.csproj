@@ -44,6 +44,14 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Kendo.Mvc">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\UI for ASP.NET MVC Q2 2016\wrappers\aspnetmvc\Binaries\Mvc5\Kendo.Mvc.dll</HintPath>
       <Private>True</Private>
@@ -87,8 +95,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -142,8 +151,58 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivitiesCategory_Table.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityPeopleCategory_Table.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\City_Table.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Corporation_Table.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PcdcrModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PcdcrModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PcdcrModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PcdcrModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PcdcrModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Programs_Table.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjectActivities_Table.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjectControl.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Projects_table.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Province_Table.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users_Table.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1407,6 +1466,16 @@
     <Content Include="Content\kendo\2016.2.504\Uniform\sprite_kpi_2x.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\PcdcrModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PcdcrModel.edmx</DependentUpon>
+      <LastGenOutput>PcdcrModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PcdcrModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PcdcrModel.edmx</DependentUpon>
+      <LastGenOutput>PcdcrModel.cs</LastGenOutput>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1641,6 +1710,13 @@
     <Content Include="Content\assets\scss\themes\elegant\var.scss" />
     <Content Include="Content\assets\scss\themes\simple\theme.scss" />
     <Content Include="Content\assets\scss\themes\simple\var.scss" />
+    <EntityDeploy Include="Models\PcdcrModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PcdcrModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PcdcrModel.edmx.diagram">
+      <DependentUpon>PcdcrModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -1934,6 +2010,8 @@
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Views\Project\ProjectManagement.cshtml" />
+    <Content Include="Views\Users\UserManegment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
@@ -1944,10 +2022,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

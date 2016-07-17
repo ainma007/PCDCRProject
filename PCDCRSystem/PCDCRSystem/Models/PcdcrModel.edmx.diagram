@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd852cc26df24f94a5841befb8b45ece" Name="Diagram1">
+        <EntityTypeShape EntityType="PCDCRModel.ActivitiesCategory_Table" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCDCRModel.ActivityPeopleCategory_Table" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCDCRModel.City_Table" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCDCRModel.Corporation_Table" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCDCRModel.Programs_Table" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCDCRModel.ProjectActivities_Table" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCDCRModel.ProjectControl" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCDCRModel.Projects_table" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCDCRModel.Province_Table" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCDCRModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCDCRModel.Users_Table" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_ActivitiesCategory_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_City_Table_Province_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_City_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_Corporation_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectControl_Programs_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_Projects_table_Programs_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_Projects_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_Province_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_Users_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectControl_Projects_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectControl_Users_Table" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
