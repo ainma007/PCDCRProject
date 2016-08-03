@@ -17,77 +17,51 @@ namespace PCDCRSystem.Controllers
             return View();
         }
 
-        public JsonResult TheUsers([DataSourceRequest] DataSourceRequest request)
+        private UserService UserService;
+        public UsersController()
         {
-            using (PCDCREntities db = new PCDCREntities())
-            {
-                var q = db.Users_Table.ToList();
-                return Json(q.ToDataSourceResult(request));
-            }
+            UserService = new UserService(new PCDCREntities());
         }
-
-
+        public ActionResult User_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(UserService.Read().ToDataSourceResult(request));
+        }
         // Insert New
-        public JsonResult Create_User([DataSourceRequest] DataSourceRequest request, Users_Table usr)
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        public ActionResult User_Create([DataSourceRequest] DataSourceRequest request, UserViewModel user)
         {
-            using (PCDCREntities db = new PCDCREntities())
+            if (user != null && ModelState.IsValid)
             {
-                if (usr != null && ModelState.IsValid)
-                {
-                    Users_Table u = new Users_Table();
-
-                    u.UserName = usr.UserName;
-                    u.Password = usr.Password;
-                    u.UserAddress = usr.UserAddress;
-                    u.UserPhone = usr.UserPhone;
-                    u.Status = usr.Status;
-                    u.UserType = usr.UserType;
-
-                    db.Users_Table.Add(u);
-                    db.SaveChanges();
-                    usr.ID = u.ID;
-                }
-
-                return Json(new[] { usr }.ToDataSourceResult(request, ModelState));
+                UserService.Create(user);
             }
+
+            return Json(new[] { user }.ToDataSourceResult(request, ModelState));
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult Update_User([DataSourceRequest] DataSourceRequest request, Users_Table usr)
+
+        public ActionResult User_Update([DataSourceRequest] DataSourceRequest request, UserViewModel user)
         {
-            using (PCDCREntities db = new PCDCREntities())
+            if (user != null && ModelState.IsValid)
             {
-                if (usr != null && ModelState.IsValid)
-                {
-                    Users_Table u = db.Users_Table.Single(c => c.ID == usr.ID);
-
-
-                    u.UserName = usr.UserName;
-                    u.Password = usr.Password;
-                    u.UserAddress = usr.UserAddress;
-                    u.UserPhone = usr.UserPhone;
-                    u.Status = usr.Status;
-                    u.UserType = usr.UserType;
-
-                }
-                db.SaveChanges();
-                return Json(ModelState.IsValid ? true : ModelState.ToDataSourceResult());
+                UserService.Update(user);
             }
+
+            return Json(new[] { user }.ToDataSourceResult(request, ModelState));
         }
+
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult Delete_User([DataSourceRequest] DataSourceRequest request, Users_Table usr)
-        {
-            using (PCDCREntities db = new PCDCREntities())
-            {
-                if (usr != null && ModelState.IsValid)
-                {
-                    Users_Table u = db.Users_Table.Single(c => c.ID == usr.ID);
-                    db.Users_Table.Remove(u);
-                }
 
-                db.SaveChanges();
-                return Json(ModelState.IsValid ? true : ModelState.ToDataSourceResult());
+        public ActionResult User_Destroy([DataSourceRequest] DataSourceRequest request, UserViewModel user)
+        {
+            if (user != null)
+            {
+                UserService.Destroy(user);
             }
+
+            return Json(new[] { user }.ToDataSourceResult(request, ModelState));
         }
+
     }
 }

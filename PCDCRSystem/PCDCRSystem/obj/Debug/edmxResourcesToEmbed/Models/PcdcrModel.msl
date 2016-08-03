@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="PCDCRModelStoreContainer" CdmEntityContainer="PCDCREntities">
     <EntitySetMapping Name="ActivitiesCategory_Table">
-      <EntityTypeMapping TypeName="PCDCRModel.ActivitiesCategory_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ActivitiesCategory_Table)">
         <MappingFragment StoreEntitySet="ActivitiesCategory_Table">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ActivitiesCategoryName" ColumnName="ActivitiesCategoryName" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ActivityPeopleCategory_Table">
-      <EntityTypeMapping TypeName="PCDCRModel.ActivityPeopleCategory_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ActivityPeopleCategory_Table)">
         <MappingFragment StoreEntitySet="ActivityPeopleCategory_Table">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
@@ -18,7 +18,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="City_Table">
-      <EntityTypeMapping TypeName="PCDCRModel.City_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.City_Table)">
         <MappingFragment StoreEntitySet="City_Table">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
@@ -27,7 +27,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Corporation_Table">
-      <EntityTypeMapping TypeName="PCDCRModel.Corporation_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.Corporation_Table)">
         <MappingFragment StoreEntitySet="Corporation_Table">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CorporationName" ColumnName="CorporationName" />
@@ -37,7 +37,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Programs_Table">
-      <EntityTypeMapping TypeName="PCDCRModel.Programs_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.Programs_Table)">
         <MappingFragment StoreEntitySet="Programs_Table">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
@@ -45,7 +45,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProjectActivities_Table">
-      <EntityTypeMapping TypeName="PCDCRModel.ProjectActivities_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ProjectActivities_Table)">
         <MappingFragment StoreEntitySet="ProjectActivities_Table">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
@@ -77,7 +77,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProjectControl">
-      <EntityTypeMapping TypeName="PCDCRModel.ProjectControl">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ProjectControl)">
         <MappingFragment StoreEntitySet="ProjectControl">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -87,7 +87,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Projects_table">
-      <EntityTypeMapping TypeName="PCDCRModel.Projects_table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.Projects_table)">
         <MappingFragment StoreEntitySet="Projects_table">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
@@ -99,7 +99,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Province_Table">
-      <EntityTypeMapping TypeName="PCDCRModel.Province_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.Province_Table)">
         <MappingFragment StoreEntitySet="Province_Table">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
@@ -107,18 +107,18 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="PCDCRModel.sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.sysdiagrams)">
         <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users_Table">
-      <EntityTypeMapping TypeName="PCDCRModel.Users_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.Users_Table)">
         <MappingFragment StoreEntitySet="Users_Table">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />

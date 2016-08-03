@@ -1,0 +1,19 @@
+﻿@model int
+
+
+
+@(Html.Kendo().DropDownListFor(m => m)
+          .HtmlAttributes(new { style = "width: 100%;" })
+          .DataTextField("ProgramName")
+          .DataValueField("ProgramID")
+          .Filter("contains")
+          .DataSource(source =>
+          {
+              source.Read(read =>
+              {
+                  read.Action("GetPrograms", "Project");
+              })
+              .ServerFiltering(false);
+          })
+)
+@Html.ValidationMessageFor(m => m)

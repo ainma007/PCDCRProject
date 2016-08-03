@@ -1,56 +1,68 @@
-﻿
+﻿@using PCDCRSystem.Models
 @{
-    ViewBag.Title = "ProjectManagement";
+    ViewBag.Title = "إدارة المشاريع";
 }
 
-<h2>ProjectManagement</h2>
+<div class="page-title">
+    <i class="icon-custom-left"></i>
+    <h3>إدارة - <span class="semi-bold">المشاريع</span></h3>
+</div>
 
-@(
- Html.Kendo().Grid<PCDCRSystem.Models.Projects_table>()
-   .Name("UsersGrid")
-   .Columns(c =>
-   {
-       c.Bound(p => p.ID);
-       c.Bound(p => p.ProjectName);
-       c.Bound(p => p.StartDate);
-       c.Bound(p => p.EndDate);
-       c.Bound(p => p.ProjectStatus);
-       c.Bound(p => p.ProgrameID).ClientTemplate("#=Category.CategoryName#").Width(180);
-       c.Command(
-           cmd =>
-           {
-               cmd.Edit();
-               cmd.Destroy();
+@(Html.Kendo().Grid<ProjectViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.ProjectID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
+        columns.Bound(p => p.ProjectName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المشروع" }).Width(100);
+        columns.Bound(p => p.StartDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ البداية" }).Width(100).Format("{0:MM/dd/yyyy}");
+        columns.Bound(p => p.EndDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ النهاية" }).Width(100).Format("{0:MM/dd/yyyy}");
 
-           });
+        columns.ForeignKey(p => p.ProgrameID, (System.Collections.IEnumerable)ViewData["programs"], "ProgramID", "ProgramName")
+                   .Title("البرنامج").Width(200);
+        columns.Bound(p => p.Status).Width(50).HeaderHtmlAttributes(new { @title = "الحالة" }).Width(100);
 
-   })
-           .Excel(excel => excel
-            .FileName("Kendo UI Grid Export.xlsx")
-            .Filterable(true)
-                .ProxyURL(Url.Action("AllProjects", "Project"))
-        )
-     .DataSource(
-                datasource => datasource.Ajax()
-                    .Read(read => read.Action("AllProjects", "Project"))
-                          .Create(c => c.Action("Create_Project", "Project"))
-                            .Update(u => u.Action("Update_Project", "Project"))
-                                  .Destroy(d => d.Action("Delete_Project", "Project"))
-
-                      .Model(m => { m.Id(p => p.ID); })
-
-         )
-       .Groupable()
-       .Sortable()
-       .Selectable()
-       .Filterable()
-       .Editable(e => e.Mode(GridEditMode.PopUp))
-       .Pageable
-              (p =>
-                  p.Refresh(true)
-                   .PageSizes(true)
-                   .PreviousNext(true)
-         )
-             .ToolBar(t => t.Excel())
-                   .ToolBar(t => t.Create())
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(100);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create();
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+           .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Events(events => events.Error("errorHandler"))
+        .Model(model =>
+        {
+            model.Id(p => p.ProjectID);
+            model.Field(p => p.ProjectID).Editable(false);
+            model.Field(p => p.ProgrameID).DefaultValue(1);
+        })
+        .Read(read => read.Action("Project_Read", "Project"))
+        .Update(update => update.Action("EditingInline_Update", "Project"))
+        .Create(create => create.Action("EditingInline_Create", "Project"))
+        .Destroy(destroy => destroy.Action("EditingInline_Destroy", "Project"))
+    )
 )
+
+<script type="text/javascript">
+    function errorHandler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>

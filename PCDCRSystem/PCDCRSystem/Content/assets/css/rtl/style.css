@@ -2,6 +2,15 @@
 /*!
 * direction.less v0.1.0
 */
+@import url(http://fonts.googleapis.com/earlyaccess/amiri.css);
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+@import url(http://fonts.googleapis.com/earlyaccess/lateef.css); 
+@import url(http://fonts.googleapis.com/earlyaccess/scheherazade.css);
+@import url(http://fonts.googleapis.com/earlyaccess/thabit.css);
+font-family: 'Droid Arabic Kufi';
+
+.droid-arabic-naskh{font-family: 'Droid Arabic Kufi', serif;}
 :-moz-placeholder {
   color: '#333843';
 }
@@ -26,7 +35,7 @@ body {
   direction: rtl;
   background-color: #1b1e24;
   color: #6f7b8a;
-  font-family: 'Arial';
+ font-family: 'Droid Arabic Kufi';
   font-size: 13px;
   padding: 0px !important;
   margin: 0px !important;
@@ -449,7 +458,7 @@ body.modal-open .chat-window-wrapper {
 .page-sidebar {
   background-color: #1b1e24 !important;
   height: 100%;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   -webkit-backface-visibility: hidden;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
@@ -864,7 +873,7 @@ body.modal-open .chat-window-wrapper {
   z-index: 10;
 }
 .chat-window-wrapper {
-  font-family: 'Arial';
+ font-family: 'Droid Arabic Kufi';
   font-size: 13px;
   position: fixed;
   top: 0;
@@ -1287,7 +1296,7 @@ body.modal-open .chat-window-wrapper {
   font-size: 18px;
 }
 .page-content .breadcrumb {
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
@@ -1318,7 +1327,7 @@ body.modal-open .chat-window-wrapper {
   display: inline-block;
   position: absolute;
   width: 200px;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   background-color: #1b1e24;
   height: 100%;
 }
@@ -1610,7 +1619,7 @@ body.modal-open .chat-window-wrapper {
 .horizontal-menu .bar-inner > ul > li {
   display: inline-block;
   padding: 10px 15px;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   vertical-align: middle;
 }
 .horizontal-menu .bar-inner > ul > li.classic {
@@ -1803,7 +1812,7 @@ h4,
 h5,
 h6 {
   margin: 10px 0;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   font-weight: 300;
   color: #505458;
 }
@@ -1822,7 +1831,7 @@ h4 {
 h3 small,
 h4 small,
 h5 small {
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   font-weight: 300;
   color: #444;
 }
@@ -2089,7 +2098,7 @@ hr {
   color: #666;
   margin: 0 0 10px;
   font-weight: 300;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
 }
 .page-title h3 {
   display: inline-block;
@@ -2117,7 +2126,7 @@ hr {
   color: #888;
 }
 .page-title .actions {
-  font-family: 'Arial';
+ font-family: 'Droid Arabic Kufi';
 }
 .page-content .breadcrumb a,
 .page-content .breadcrumb i,
@@ -5069,7 +5078,7 @@ form legend,
   padding: 15px 18px 15px;
 }
 .notification-messages {
-  font-family: 'Arial';
+ font-family: 'Droid Arabic Kufi';
   background-color: #eef9f8;
   padding: 15px 18px 10px;
   display: block;
@@ -5275,13 +5284,13 @@ form legend,
   font-size: 11px;
   text-shadow: none;
   background-color: #d1dade;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   font-weight: 600;
   color: #5E5E5E;
 }
 .badge {
   text-shadow: none;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   font-weight: 600;
   background-color: #d1dade;
   font-size: 11px;
@@ -5418,7 +5427,7 @@ form legend,
 }
 .tiles .tiles-title {
   font-size: 10.5px;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   letter-spacing: 0.5px;
   font-weight: 600;
 }
@@ -5564,7 +5573,7 @@ form legend,
 .tiles .heading {
   font-size: 25px;
   display: block;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   font-weight: 600;
   margin: 4px 0px;
 }
@@ -7533,7 +7542,7 @@ input[type="checkbox"] {
 }
 .error-body {
   background-color: #e5e9ec !important;
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
   height: 100%;
 }
 .error-wrapper {
@@ -7568,7 +7577,7 @@ input[type="checkbox"] {
   height: inherit;
 }
 .error-container {
-  font-family: 'Open Sans';
+  font-family: 'Droid Arabic Kufi';
 }
 .error-container .error-number {
   color: #22262e;
@@ -7670,7 +7679,7 @@ input[type="checkbox"] {
   width: 25%;
   padding-right: 100px;
   position: absolute;
-  font-family: 'Arial';
+ font-family: 'Droid Arabic Kufi';
   text-align: right;
 }
 .cbp_tmtimeline > li .cbp_tmtime .date {

@@ -25,8 +25,8 @@ namespace PCDCRSystem.Models
         public string ProgramName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjectControl> ProjectControl { internal get; set; }
+        public virtual ICollection<ProjectControl> ProjectControl { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        internal virtual ICollection<Projects_table> Projects_table { get; set; }
+        public virtual ICollection<Projects_table> Projects_table { get; set; }
     }
 }

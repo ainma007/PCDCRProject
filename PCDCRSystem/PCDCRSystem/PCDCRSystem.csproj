@@ -183,6 +183,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PcdcrModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProgramsViewModel.cs" />
     <Compile Include="Models\Programs_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
@@ -192,18 +193,22 @@
     <Compile Include="Models\ProjectControl.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProjectService.cs" />
     <Compile Include="Models\Projects_table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProjectViewModel.cs" />
     <Compile Include="Models\Province_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserService.cs" />
     <Compile Include="Models\Users_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1471,6 +1476,7 @@
       <DependentUpon>PcdcrModel.edmx</DependentUpon>
       <LastGenOutput>PcdcrModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\PcdcrModel.edmx.sql" />
     <Content Include="Models\PcdcrModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PcdcrModel.edmx</DependentUpon>
@@ -2012,6 +2018,7 @@
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Views\Project\ProjectManagement.cshtml" />
     <Content Include="Views\Users\UserManegment.cshtml" />
+    <Content Include="Views\Project\EditorTemplates\ProgrameID.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

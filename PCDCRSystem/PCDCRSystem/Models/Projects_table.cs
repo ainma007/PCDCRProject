@@ -25,13 +25,13 @@ namespace PCDCRSystem.Models
         public string ProjectName { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
-        public string ProjectStatus { get; set; }
+        public bool ProjectStatus { get; set; }
         public Nullable<int> ProgrameID { get; set; }
     
-        public virtual Programs_Table Programs_Table { internal get; set; }
+        public virtual Programs_Table Programs_Table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjectActivities_Table> ProjectActivities_Table { internal get; set; }
+        public virtual ICollection<ProjectActivities_Table> ProjectActivities_Table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjectControl> ProjectControl { internal get; set; }
+        public virtual ICollection<ProjectControl> ProjectControl { get; set; }
     }
 }

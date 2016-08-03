@@ -6,7 +6,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="ActivitiesCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table" FromRole="ActivitiesCategory_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table" FromRole="ActivitiesCategory_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <EntityType Name="ActivityPeopleCategory_Table">
     <Key>
@@ -14,7 +14,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="PeopleCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" FromRole="ActivityPeopleCategory_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" FromRole="ActivityPeopleCategory_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <EntityType Name="City_Table">
     <Key>
@@ -23,8 +23,8 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ProvinceID" Type="Int32" />
-    <NavigationProperty Name="Province_Table" Relationship="Self.FK_City_Table_Province_Table" FromRole="City_Table" ToRole="Province_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_City_Table" FromRole="City_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="Province_Table" Relationship="Self.FK_City_Table_Province_Table" FromRole="City_Table" ToRole="Province_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_City_Table" FromRole="City_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <EntityType Name="Corporation_Table">
     <Key>
@@ -34,7 +34,7 @@
     <Property Name="CorporationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="CorporationPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CorporationAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Corporation_Table" FromRole="Corporation_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Corporation_Table" FromRole="Corporation_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <EntityType Name="Programs_Table">
     <Key>
@@ -42,8 +42,8 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Programs_Table" FromRole="Programs_Table" ToRole="ProjectControl" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="Projects_table" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Programs_Table" ToRole="Projects_table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Internal" />
+    <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Programs_Table" FromRole="Programs_Table" ToRole="ProjectControl" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="Projects_table" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Programs_Table" ToRole="Projects_table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <EntityType Name="ProjectActivities_Table">
     <Key>
@@ -69,19 +69,19 @@
     <Property Name="Emergency_Intervention" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="ProjectID" Type="Int32" />
     <Property Name="UserID" Type="Int32" />
-    <Property Name="SaturdayDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SundayDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MondayDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tuesdayDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="wednesdayDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="thursdayDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ActivitiesCategory_Table" Relationship="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table" FromRole="ProjectActivities_Table" ToRole="ActivitiesCategory_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="ActivityPeopleCategory_Table" Relationship="Self.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" FromRole="ProjectActivities_Table" ToRole="ActivityPeopleCategory_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="City_Table" Relationship="Self.FK_ProjectActivities_Table_City_Table" FromRole="ProjectActivities_Table" ToRole="City_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="Corporation_Table" Relationship="Self.FK_ProjectActivities_Table_Corporation_Table" FromRole="ProjectActivities_Table" ToRole="Corporation_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="Projects_table" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="ProjectActivities_Table" ToRole="Projects_table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="Province_Table" Relationship="Self.FK_ProjectActivities_Table_Province_Table" FromRole="ProjectActivities_Table" ToRole="Province_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="Users_Table" Relationship="Self.FK_ProjectActivities_Table_Users_Table" FromRole="ProjectActivities_Table" ToRole="Users_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <Property Name="SaturdayDay" Type="Boolean" />
+    <Property Name="SundayDay" Type="Boolean" />
+    <Property Name="MondayDay" Type="Boolean" />
+    <Property Name="tuesdayDay" Type="Boolean" />
+    <Property Name="wednesdayDay" Type="Boolean" />
+    <Property Name="thursdayDay" Type="Boolean" />
+    <NavigationProperty Name="ActivitiesCategory_Table" Relationship="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table" FromRole="ProjectActivities_Table" ToRole="ActivitiesCategory_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="ActivityPeopleCategory_Table" Relationship="Self.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" FromRole="ProjectActivities_Table" ToRole="ActivityPeopleCategory_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="City_Table" Relationship="Self.FK_ProjectActivities_Table_City_Table" FromRole="ProjectActivities_Table" ToRole="City_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="Corporation_Table" Relationship="Self.FK_ProjectActivities_Table_Corporation_Table" FromRole="ProjectActivities_Table" ToRole="Corporation_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="Projects_table" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="ProjectActivities_Table" ToRole="Projects_table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="Province_Table" Relationship="Self.FK_ProjectActivities_Table_Province_Table" FromRole="ProjectActivities_Table" ToRole="Province_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="Users_Table" Relationship="Self.FK_ProjectActivities_Table_Users_Table" FromRole="ProjectActivities_Table" ToRole="Users_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <EntityType Name="ProjectControl">
     <Key>
@@ -90,10 +90,10 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserID" Type="Int32" />
     <Property Name="ProjectID" Type="Int32" />
-    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Programs_Table" Relationship="Self.FK_ProjectControl_Programs_Table" FromRole="ProjectControl" ToRole="Programs_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="Projects_table" Relationship="Self.FK_ProjectControl_Projects_table" FromRole="ProjectControl" ToRole="Projects_table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="Users_Table" Relationship="Self.FK_ProjectControl_Users_Table" FromRole="ProjectControl" ToRole="Users_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Programs_Table" Relationship="Self.FK_ProjectControl_Programs_Table" FromRole="ProjectControl" ToRole="Programs_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="Projects_table" Relationship="Self.FK_ProjectControl_Projects_table" FromRole="ProjectControl" ToRole="Projects_table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="Users_Table" Relationship="Self.FK_ProjectControl_Users_Table" FromRole="ProjectControl" ToRole="Users_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <EntityType Name="Projects_table">
     <Key>
@@ -103,11 +103,11 @@
     <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="StartDate" Type="DateTime" Precision="0" />
     <Property Name="EndDate" Type="DateTime" Precision="0" />
-    <Property Name="ProjectStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectStatus" Type="Boolean" Nullable="false" />
     <Property Name="ProgrameID" Type="Int32" />
-    <NavigationProperty Name="Programs_Table" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Projects_table" ToRole="Programs_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="Projects_table" ToRole="ProjectActivities_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Projects_table" FromRole="Projects_table" ToRole="ProjectControl" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <NavigationProperty Name="Programs_Table" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Projects_table" ToRole="Programs_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="Projects_table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Projects_table" FromRole="Projects_table" ToRole="ProjectControl" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <EntityType Name="Province_Table">
     <Key>
@@ -115,8 +115,8 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProvinceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="City_Table" Relationship="Self.FK_City_Table_Province_Table" FromRole="Province_Table" ToRole="City_Table" />
-    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Province_Table" FromRole="Province_Table" ToRole="ProjectActivities_Table" />
+    <NavigationProperty Name="City_Table" Relationship="Self.FK_City_Table_Province_Table" FromRole="Province_Table" ToRole="City_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Province_Table" FromRole="Province_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -139,9 +139,9 @@
     <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="UserAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Users_Table" FromRole="Users_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-    <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Users_Table" FromRole="Users_Table" ToRole="ProjectControl" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Users_Table" FromRole="Users_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Users_Table" FromRole="Users_Table" ToRole="ProjectControl" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <Association Name="FK_ProjectActivities_Table_ActivitiesCategory_Table">
     <End Role="ActivitiesCategory_Table" Type="Self.ActivitiesCategory_Table" Multiplicity="0..1" />

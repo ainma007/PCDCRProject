@@ -14,85 +14,74 @@ namespace PCDCRSystem.Controllers
         // GET: Project
         public ActionResult ProjectManagement()
         {
+             PopulatePrograms();
             return View();
+           
         }
-
-        public JsonResult AllProjects([DataSourceRequest] DataSourceRequest request)
+        private void PopulatePrograms()
         {
-            using (PCDCREntities db = new PCDCREntities())
-            {
-                var q = db.Projects_table.ToList();
-                return Json(q.ToDataSourceResult(request));
-            }
-        }
+            var dataContext = new PCDCREntities();
+            var programs = dataContext.Programs_Table
+                        .Select(c => new ProgramsViewModel
+                        {
+                            ProgramID = c.ID,
+                            ProgramName = c.ProgramName
+                        })
+                        .OrderBy(e => e.ProgramID);
 
+            ViewData["programs"] = programs;
+            ViewData["defaultProgram"] = programs.First();
+        }
+        private ProjectService ProjectService;
+
+        public ProjectController()
+        {
+            ProjectService = new ProjectService(new PCDCREntities());
+        }
+        public ActionResult Project_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(ProjectService.Read().ToDataSourceResult(request));
+        }
+        public JsonResult GetPrograms()
+        {
+            return Json(ProjectService.ReadPrograms(), JsonRequestBehavior.AllowGet);
+        }
 
         // Insert New
-        public JsonResult Create_Project([DataSourceRequest] DataSourceRequest request, Projects_table project)
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        public ActionResult EditingInline_Create([DataSourceRequest] DataSourceRequest request, ProjectViewModel product)
         {
-            using (PCDCREntities db = new PCDCREntities())
+            if (product != null && ModelState.IsValid)
             {
-                if (project != null && ModelState.IsValid)
-                {
-                    Projects_table p = new Projects_table();
-
-
-
-                    p.ProjectName = project.ProjectName;
-                    p.StartDate = project.StartDate;
-                    p.EndDate = project.EndDate;
-                    p.ProjectStatus = project.ProjectStatus;
-
-                    p.ProgrameID = project.ProgrameID;
-
-
-
-
-                    db.Projects_table.Add(p);
-                    db.SaveChanges();
-                    project.ID = p.ID;
-                }
-
-                return Json(new[] { project }.ToDataSourceResult(request, ModelState));
+                ProjectService.Create(product);
             }
+
+            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult Update_Project([DataSourceRequest] DataSourceRequest request, Projects_table project)
+
+        public ActionResult EditingInline_Update([DataSourceRequest] DataSourceRequest request, ProjectViewModel product)
         {
-            using (PCDCREntities db = new PCDCREntities())
+            if (product != null && ModelState.IsValid)
             {
-                if (project != null && ModelState.IsValid)
-                {
-                    Projects_table p = db.Projects_table.Single(c => c.ID == project.ID);
-
-                    p.ProjectName = project.ProjectName;
-                    p.StartDate = project.StartDate;
-                    p.EndDate = project.EndDate;
-                    p.ProjectStatus = project.ProjectStatus;
-
-                    p.ProgrameID = project.ProgrameID;
-
-                }
-                db.SaveChanges();
-                return Json(ModelState.IsValid ? true : ModelState.ToDataSourceResult());
+                ProjectService.Update(product);
             }
+
+            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
         }
+
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public JsonResult Delete_Project([DataSourceRequest] DataSourceRequest request, Projects_table project)
+        
+        public ActionResult EditingInline_Destroy([DataSourceRequest] DataSourceRequest request, ProjectViewModel project)
         {
-            using (PCDCREntities db = new PCDCREntities())
+            if (project != null)
             {
-                if (project != null && ModelState.IsValid)
-                {
-                    Projects_table p = db.Projects_table.Single(c => c.ID == project.ID);
-                    db.Projects_table.Remove(p);
-                }
-
-                db.SaveChanges();
-                return Json(ModelState.IsValid ? true : ModelState.ToDataSourceResult());
+                ProjectService.Destroy(project);
             }
-        }
 
+            return Json(new[] { project }.ToDataSourceResult(request, ModelState));
+        }
     }
 }

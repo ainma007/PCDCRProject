@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Title Goes Here</title>
@@ -8,11 +10,11 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
 
-    <<link href="@Url.Content("~/Content/assets/plugins/pace/pace-theme-flash.css")" rel="stylesheet" type="text/css" media="screen" />
+ <link href="@Url.Content("~/Content/assets/plugins/pace/pace-theme-flash.css")" rel="stylesheet" type="text/css" media="screen" />
 <link href="@Url.Content("~/Content/assets/plugins/jquery-scrollbar/jquery.scrollbar.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/assets/plugins/boostrapv3/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/assets/plugins/boostrapv3/css/bootstrap-theme.min.css")" rel="stylesheet" type="text/css" />
-<link href="@Url.Content("~/Content/assets/plugins/font-awesome/css/font-awesome.css")" rel="stylesheet" type="text/css" />
+ @Styles.Render("~/Content/assets/plugins/font-awesome/css/font-awesome.css")
 <link href="@Url.Content("~/Content/assets/css/animate.min.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/assets/css/rtl/style.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/assets/css/rtl/responsive.css")" rel="stylesheet" type="text/css" />
@@ -175,8 +177,9 @@
                 <!-- BEGIN MINI-PROFILE -->
                 <div class="user-info-wrapper">
                     <div class="profile-wrapper">
-                        <img src="assets/img/profiles/avatar.jpg" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg" width="69" height="69" />
-                    </div>
+                        <img src="@Url.Content("~/Content/assets/img/profiles/avatar.jpg")" alt="" data-src="@Url.Content("~/Content/assets/img/profiles/avatar.jpg")" data-src-retina="@Url.Content("~/Content/assets/img/profiles/avatar2x.jpg")" width="69" height="69" />
+                        
+                     </div>
                     <div class="user-info">
                         <div class="greeting">Welcome</div>
                         <div class="username">John <span class="semi-bold">Smith</span></div>
@@ -209,7 +212,7 @@
                     <!-- BEGIN SINGLE LINK -->
                     <li class="">
                         <a href="@Url.Action("UserManegment", "Users")" class="elements">
-                            <i class="fa fa-flag"></i>
+                            <i class="icon-custom-refresh"></i>
                             <span class="title">إدارة المستخدمين</span>
                         </a>
                     </li>
@@ -282,9 +285,7 @@
         <div class="page-content">
             <div class="content">
                 <!-- BEGIN PAGE TITLE -->
-                <div class="page-title">
-                    <h3>الرئيسية</h3>
-                </div>
+               
 
                 <div class="k-rtl">
                     @RenderSection("featured", required: false)

@@ -26706,6 +26706,12 @@
             </summary>
             <param name="handler">JavaScript function name</param>
         </member>
+        <member name="M:Kendo.Mvc.UI.Fluent.CustomDataSourceTransportBuilder.Submit(System.String)">
+            <summary>
+            Sets JavaScript function to handle the submit action.
+            </summary>
+            <param name="handler">JavaScript function name</param>
+        </member>
         <member name="T:Kendo.Mvc.UI.Fluent.DataSourceFilterDescriptorFactoryBase">
             <summary>
             Defines the fluent interface for configuring filter.

@@ -28,11 +28,11 @@ namespace PCDCRSystem.Models
         public string UserType { get; set; }
         public string UserPhone { get; set; }
         public string UserAddress { get; set; }
-        public string Status { get; set; }
+        public bool Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjectActivities_Table> ProjectActivities_Table { internal get; set; }
+        public virtual ICollection<ProjectActivities_Table> ProjectActivities_Table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjectControl> ProjectControl { internal get; set; }
+        public virtual ICollection<ProjectControl> ProjectControl { get; set; }
     }
 }

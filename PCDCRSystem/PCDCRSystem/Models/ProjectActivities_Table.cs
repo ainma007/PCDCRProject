@@ -34,19 +34,19 @@ namespace PCDCRSystem.Models
         public string Emergency_Intervention { get; set; }
         public Nullable<int> ProjectID { get; set; }
         public Nullable<int> UserID { get; set; }
-        public string SaturdayDay { get; set; }
-        public string SundayDay { get; set; }
-        public string MondayDay { get; set; }
-        public string tuesdayDay { get; set; }
-        public string wednesdayDay { get; set; }
-        public string thursdayDay { get; set; }
+        public Nullable<bool> SaturdayDay { get; set; }
+        public Nullable<bool> SundayDay { get; set; }
+        public Nullable<bool> MondayDay { get; set; }
+        public Nullable<bool> tuesdayDay { get; set; }
+        public Nullable<bool> wednesdayDay { get; set; }
+        public Nullable<bool> thursdayDay { get; set; }
     
-        public virtual ActivitiesCategory_Table ActivitiesCategory_Table { internal get; set; }
-        public virtual ActivityPeopleCategory_Table ActivityPeopleCategory_Table { internal get; set; }
-        public virtual City_Table City_Table { internal get; set; }
-        public virtual Corporation_Table Corporation_Table { internal get; set; }
-        public virtual Projects_table Projects_table { internal get; set; }
-        public virtual Province_Table Province_Table { internal get; set; }
-        public virtual Users_Table Users_Table { internal get; set; }
+        public virtual ActivitiesCategory_Table ActivitiesCategory_Table { get; set; }
+        public virtual ActivityPeopleCategory_Table ActivityPeopleCategory_Table { get; set; }
+        public virtual City_Table City_Table { get; set; }
+        public virtual Corporation_Table Corporation_Table { get; set; }
+        public virtual Projects_table Projects_table { get; set; }
+        public virtual Province_Table Province_Table { get; set; }
+        public virtual Users_Table Users_Table { get; set; }
     }
 }
