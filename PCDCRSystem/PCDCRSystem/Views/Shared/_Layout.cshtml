@@ -188,19 +188,35 @@
                 </div>
                 <!-- END MINI-PROFILE -->
                 <!-- BEGIN SIDEBAR MENU -->
-                <p class="menu-title">BROWSE<span class="pull-right"><a href="javascript:;"><i class="fa fa-refresh"></i></a></span></p>
+                <p class="menu-title">القائمة<span class="pull-right"><a href="javascript:;"><i class="fa fa-refresh"></i></a></span></p>
                 <ul>
                     <!-- BEGIN SELECTED LINK -->
                     <li class="start active">
-                        <a href="#">
+                        <a href="@Url.Action("Index", "Home")" class="elements">
                             <i class="icon-custom-home"></i>
-                            <span class="title">Link 1</span>
-                            <span class="selected"></span>
-                            <span class="badge badge-important pull-right">5</span>
+                            <span class="title">الرئيسية</span>
+                            
                         </a>
                     </li>
                     <!-- END SELECTED LINK -->
                     <!-- BEGIN BADGE LINK -->
+                    <li class="">
+                        <a href="@Url.Action("UserManegment", "Users")" class="elements">
+                            <i class="icon-custom-refresh"></i>
+                            <span class="title">إدارة المستخدمين</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;">
+                            <i class="icon-custom-ui"></i>
+                            <span class="title">المشاريع</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("ProjectManagement", "Project")" class="elements"> إدارة المشاريع</a></li>
+                            <li><a href="@Url.Action("UserControlProject", "Project")" class="elements">إدارة مستخدمين المشاريع</a></li>
+                        </ul>
+                    </li>
                     <li class="">
                         <a href="@Url.Action("ProjectManagement", "Project")" class="elements">
                             <i class="fa fa-envelope"></i>
@@ -208,16 +224,7 @@
                             <span class="badge badge-disable pull-right">203</span>
                         </a>
                     </li>
-                    <!-- END BADGE LINK -->
-                    <!-- BEGIN SINGLE LINK -->
-                    <li class="">
-                        <a href="@Url.Action("UserManegment", "Users")" class="elements">
-                            <i class="icon-custom-refresh"></i>
-                            <span class="title">إدارة المستخدمين</span>
-                        </a>
-                    </li>
-                    <!-- END SINGLE LINK -->
-                    <!-- BEGIN ONE LEVEL MENU -->
+                  
                     <li class="">
                         <a href="javascript:;">
                             <i class="icon-custom-ui"></i>

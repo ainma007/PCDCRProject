@@ -33,10 +33,16 @@ namespace PCDCRSystem.Controllers
             ViewData["defaultProgram"] = programs.First();
         }
         private ProjectService ProjectService;
+        private UserService UserService;
+        private ProjectControlService ProjectControlService;
 
         public ProjectController()
         {
+            ProjectControlService = new ProjectControlService(new PCDCREntities());
+
             ProjectService = new ProjectService(new PCDCREntities());
+            UserService = new UserService(new PCDCREntities());
+
         }
         public ActionResult Project_Read([DataSourceRequest] DataSourceRequest request)
         {
@@ -82,6 +88,101 @@ namespace PCDCRSystem.Controllers
             }
 
             return Json(new[] { project }.ToDataSourceResult(request, ModelState));
+        }
+
+        /// <summary>
+        /// Project Control
+        /// التحكم في مستخدمين المشاريع
+        /// </summary>
+        /// <returns></returns>
+
+        public ActionResult UserControlProject()
+        {
+          PopulateProject();
+          PopulateUsers();
+            return View();
+
+        }
+
+        public void PopulateProject()
+        {
+            var dataContext = new PCDCREntities();
+            var projects = dataContext.Projects_table
+                        .Select(c => new ProjectViewModel
+                        {
+                            ProjectID = c.ID,
+                            ProjectName = c.ProjectName
+                        })
+                        .OrderBy(e => e.ProjectID);
+
+            ViewData["projects"] = projects;
+            ViewData["defaultProject"] = projects.First();
+        }
+
+        public void PopulateUsers()
+        {
+            var dataContext = new PCDCREntities();
+            var users = dataContext.Users_Table
+                        .Select(c => new UserViewModel
+                        {
+                            UserID = c.ID,
+                            FullName = c.FullName
+                        })
+                        .OrderBy(e => e.UserID);
+
+            ViewData["users"] = users;
+            ViewData["defaultUser"] = users.First();
+        }
+
+        public ActionResult ProjectControl_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(ProjectControlService.Read().ToDataSourceResult(request));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        public ActionResult ProjectControl_Create([DataSourceRequest] DataSourceRequest request, ProjectControlViewModel control)
+        {
+            if (control != null && ModelState.IsValid)
+            {
+                ProjectControlService.Create(control);
+            }
+
+            return Json(new[] { control }.ToDataSourceResult(request, ModelState));
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        public ActionResult ProjectControl_Update([DataSourceRequest] DataSourceRequest request, ProjectControlViewModel control)
+        {
+            if (control != null && ModelState.IsValid)
+            {
+                ProjectControlService.Update(control);
+            }
+
+            return Json(new[] { control }.ToDataSourceResult(request, ModelState));
+        }
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        public ActionResult ProjectControl_Destroy([DataSourceRequest] DataSourceRequest request, ProjectControlViewModel control)
+        {
+            if (control != null)
+            {
+                ProjectControlService.Destroy(control);
+            }
+
+            return Json(new[] { control }.ToDataSourceResult(request, ModelState));
+        }
+
+        public JsonResult GetProject()
+        {
+            return Json(ProjectControlService.ReadProject(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult getUsers()
+        {
+            return Json(UserService.Read(), JsonRequestBehavior.AllowGet);
         }
     }
 }

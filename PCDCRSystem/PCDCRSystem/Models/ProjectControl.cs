@@ -17,7 +17,7 @@ namespace PCDCRSystem.Models
         public int ID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> ProjectID { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public bool Status { get; set; }
     
         public virtual Programs_Table Programs_Table { get; set; }
         public virtual Projects_table Projects_table { get; set; }

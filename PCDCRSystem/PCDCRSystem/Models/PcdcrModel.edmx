@@ -423,7 +423,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" />
           <Property Name="ProjectID" Type="Int32" />
-          <Property Name="Status" Type="Boolean" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Programs_Table" Relationship="Self.FK_ProjectControl_Programs_Table" FromRole="ProjectControl" ToRole="Programs_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
           <NavigationProperty Name="Projects_table" Relationship="Self.FK_ProjectControl_Projects_table" FromRole="ProjectControl" ToRole="Projects_table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
           <NavigationProperty Name="Users_Table" Relationship="Self.FK_ProjectControl_Users_Table" FromRole="ProjectControl" ToRole="Users_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />

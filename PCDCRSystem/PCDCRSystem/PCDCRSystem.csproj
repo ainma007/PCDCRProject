@@ -193,6 +193,8 @@
     <Compile Include="Models\ProjectControl.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProjectControlService.cs" />
+    <Compile Include="Models\ProjectControlViewModel.cs" />
     <Compile Include="Models\ProjectService.cs" />
     <Compile Include="Models\Projects_table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
@@ -2019,6 +2021,9 @@
     <Content Include="Views\Project\ProjectManagement.cshtml" />
     <Content Include="Views\Users\UserManegment.cshtml" />
     <Content Include="Views\Project\EditorTemplates\ProgrameID.cshtml" />
+    <Content Include="Views\Project\UserControlProject.cshtml" />
+    <Content Include="Views\Project\EditorTemplates\ProID.cshtml" />
+    <Content Include="Views\Project\EditorTemplates\UserID.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
