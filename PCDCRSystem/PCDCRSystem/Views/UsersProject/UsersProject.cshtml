@@ -28,13 +28,13 @@
         columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "FullName")
         .Title("المستخدم").Width(200);
 
-        columns.Bound(p => p.Status).Width(50).HeaderHtmlAttributes(new { @title = "الحالة" }).Width(100);
+        columns.Bound(p => p.Status).Width(50).HeaderHtmlAttributes(new { @title = "الحالة" }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Status ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Width(50).Title("الحالة");
 
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(100);
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
     })
     .ToolBar(toolBar =>
     {
-        toolBar.Create();
+        toolBar.Create().Text("اضافة مستخدم لمشروع");
     })
     .Editable(editable => editable.Mode(GridEditMode.PopUp))
            .Pageable()

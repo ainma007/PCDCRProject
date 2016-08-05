@@ -20,18 +20,18 @@
     .Name("grid")
     .Columns(columns =>
     {
-        columns.Bound(p => p.CityID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
-        columns.Bound(p => p.CityName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المشروع" }).Width(100);
+        columns.Bound(p => p.CityID).Width(50).Hidden();
+        columns.Bound(p => p.CityName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المدينة" }).Width(100).Title("المدينة");
       
 
         columns.ForeignKey(p => p.ProvinceID, (System.Collections.IEnumerable)ViewData["province"], "ProvinceID", "ProvinceName")
-                   .Title("البرنامج").Width(200);
+                   .Title("المحافظة").Width(100);
 
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(100);
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
     })
     .ToolBar(toolBar =>
     {
-        toolBar.Create();
+        toolBar.Create().Text("اضافة مدينة جديدة");
     })
     .Editable(editable => editable.Mode(GridEditMode.PopUp))
 

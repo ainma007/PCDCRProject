@@ -18,7 +18,7 @@ namespace PCDCRSystem.Models
         }
 
         [Required]
-        [DisplayName("City Name")]
+        [DisplayName("اسم المدينة:")]
         public string CityName
         {
             get;
@@ -33,6 +33,7 @@ namespace PCDCRSystem.Models
             set;
         }
         [UIHint("ProvinceID")]
+        [DisplayName("المحافظة")]
         public int? ProvinceID { get; set; }
     }
 }

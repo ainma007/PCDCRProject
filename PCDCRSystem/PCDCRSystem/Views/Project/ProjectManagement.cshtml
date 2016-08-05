@@ -21,19 +21,19 @@
     .Columns(columns =>
     {
         columns.Bound(p => p.ProjectID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
-        columns.Bound(p => p.ProjectName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المشروع" }).Width(100);
-        columns.Bound(p => p.StartDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ البداية" }).Width(100).Format("{0:dd/MM/yyyy}");
-        columns.Bound(p => p.EndDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ النهاية" }).Width(100).Format("{0:dd/MM/yyyy}");
+        columns.Bound(p => p.ProjectName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المشروع" }).Width(100).Title("اسم المشروع");
+        columns.Bound(p => p.StartDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ البداية" }).Width(100).Format("{0:dd/MM/yyyy}").Title("تاريخ البدء");
+        columns.Bound(p => p.EndDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ النهاية" }).Width(100).Format("{0:dd/MM/yyyy}").Title("تاريخ الانتهاء");
 
         columns.ForeignKey(p => p.ProgrameID, (System.Collections.IEnumerable)ViewData["programs"], "ProgramID", "ProgramName")
-                   .Title("البرنامج").Width(200);
-        columns.Bound(p => p.Status).Width(50).HeaderHtmlAttributes(new { @title = "الحالة" }).Width(100);
+                   .Title("البرنامج").Width(100);
+        columns.Bound(p => p.Status).Width(30).HeaderHtmlAttributes(new { @title = "الحالة" }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Status ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
 
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(100);
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
     })
     .ToolBar(toolBar =>
     {
-        toolBar.Create();
+        toolBar.Create().Text("اضافة مشروع");
     })
     .Editable(editable => editable.Mode(GridEditMode.PopUp))
     

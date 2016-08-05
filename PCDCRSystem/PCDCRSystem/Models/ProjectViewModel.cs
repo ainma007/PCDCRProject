@@ -17,14 +17,14 @@ namespace PCDCRSystem.Models
         }
 
         [Required]
-        [DisplayName("ProjectName")]
+        [DisplayName("اسم المشروع:")]
         public string ProjectName
         {
             get;
             set;
         }
 
-        [DisplayName("Start Date")]
+        [DisplayName("تاريخ البدء:")]
         [DataType(DataType.Date)]
         public DateTime StartDate
         {
@@ -33,7 +33,7 @@ namespace PCDCRSystem.Models
         }
 
 
-        [DisplayName("End Date")]
+        [DisplayName("تاريخ الانتهاء:")]
         [DataType(DataType.Date)]
         public DateTime EndDate
         {
@@ -53,6 +53,7 @@ namespace PCDCRSystem.Models
             set;
         }
         [UIHint("ProgrameID")]
+        [DisplayName("البرنامج:")]
         public int? ProgrameID { get; set; }
      
     }

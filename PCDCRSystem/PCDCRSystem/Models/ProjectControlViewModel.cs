@@ -26,6 +26,7 @@ namespace PCDCRSystem.Models
         }
 
         [UIHint("ProID")]
+        [DisplayName("اسم المشروع:")]
         public int? ProID { get; set; }
 
 
@@ -37,8 +38,9 @@ namespace PCDCRSystem.Models
         }
 
         [UIHint("UserID")]
+        [DisplayName("اسم المستخدم:")]
         public int? UserID { get; set; }
-
+        [DisplayName("الحالة:")]
         public bool Status { get; set; }
 
 
