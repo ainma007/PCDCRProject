@@ -23,8 +23,6 @@ namespace PCDCRSystem.Models
                 CityName = city.CityName,
                 ProvinceID = city.ProvinceID,
 
-
-
                 Province = new ProvinceViewModel()
                 {
                     ProvinceID = city.Province_Table.ID,
@@ -64,7 +62,7 @@ namespace PCDCRSystem.Models
             entities.SaveChanges();
         }
 
-        public void Destroyproject(CtiyViewModel city)
+        public void Destroy(CtiyViewModel city)
         {
             var entity = new City_Table();
 

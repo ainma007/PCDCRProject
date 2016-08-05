@@ -1,0 +1,16 @@
+﻿@model string
+
+@(Html.Kendo().ComboBoxFor(m => m)
+          .Name("size")
+          .Placeholder("اختر الصلاحية")
+          .BindTo(new List<string>() {
+              "مدير",
+              "منسق",
+              "مراقب خارجي",
+              
+          })
+          .SelectedIndex(0)
+          .Suggest(true)
+          .HtmlAttributes(new { style = "width:100%;" })
+)
+@Html.ValidationMessageFor(m => m)

@@ -1,0 +1,17 @@
+﻿@model int
+
+@(Html.Kendo().DropDownListFor(m => m)
+          .HtmlAttributes(new { style = "width: 100%;" })
+          .DataTextField("ProvinceName")
+          .DataValueField("ProvinceID")
+          .Filter("contains")
+          .DataSource(source =>
+          {
+              source.Read(read =>
+              {
+                  read.Action("GetProvince", "City");
+              })
+              .ServerFiltering(false);
+          })
+)
+@Html.ValidationMessageFor(m => m)

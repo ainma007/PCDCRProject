@@ -17,7 +17,7 @@ namespace PCDCRSystem.Models
         }
 
         [Required]
-        [DisplayName("Full Name")]
+        [DisplayName("اسم الموظف:")]
         public string FullName
         {
             get;
@@ -25,7 +25,7 @@ namespace PCDCRSystem.Models
         }
 
         
-        [DisplayName("UserName")]
+        [DisplayName("اسم المستخدم:")]
         public string Username
         {
             get;
@@ -33,7 +33,7 @@ namespace PCDCRSystem.Models
         }
 
         
-        [DisplayName("Password")]
+        [DisplayName("الباسورد:")]
         public string Password
         {
             get;
@@ -41,14 +41,15 @@ namespace PCDCRSystem.Models
         }
 
         
-        [DisplayName("UserType")]
+        [DisplayName("نوع المستخدم:")]
+        [UIHint("UserType")]
         public string UserType
         {
             get;
             set;
         }
         
-        [DisplayName("UserPhone")]
+        [DisplayName("رقم الهاتف:")]
         public string UserPhone
         {
             get;
@@ -56,12 +57,13 @@ namespace PCDCRSystem.Models
         }
 
      
-        [DisplayName("UserAddress")]
+        [DisplayName("عنوان الموظف:")]
         public string UserAddress
         {
             get;
             set;
         }
+        [DisplayName("الحالة:")]
         public bool userstatus
         {
             get;

@@ -5,32 +5,32 @@
 
 <div class="page-title">
     <i class="icon-custom-left"></i>
-    <h3>إدارة - <span class="semi-bold">المشاريع</span></h3>
+    <h3>إدارة - <span class="semi-bold">المستخدمين</span></h3>
 </div>
 
 @(Html.Kendo().Grid<UserViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
-        columns.Bound(p => p.UserID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
-        columns.Bound(p => p.FullName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المشروع" }).Width(100);
-        columns.Bound(p => p.Username).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ البداية" }).Width(100);
-        columns.Bound(p => p.Password).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ النهاية" }).Width(100);
-        columns.Bound(p => p.UserType).Width(50).HeaderHtmlAttributes(new { @title = "الحالة" }).Width(100);
+        columns.Bound(p => p.UserID).Width(50).Hidden();
+        columns.Bound(p => p.FullName).Width(100).Title("اسم الموظف");
+        columns.Bound(p => p.Username).Width(50).Title("اسم السمتخدم");
+        columns.Bound(p => p.Password).Width(100).Hidden();
+        columns.Bound(p => p.UserType).Width(30).Title("نوع المستخدم"); ;
 
-        columns.Bound(p => p.UserPhone).Width(50).HeaderHtmlAttributes(new { @title = "الحالة" }).Width(100);
+        columns.Bound(p => p.UserPhone).Width(50).Title("رقم الهاتف"); ;
 
-        columns.Bound(p => p.UserAddress).Width(50).HeaderHtmlAttributes(new { @title = "الحالة" }).Width(100);
+        columns.Bound(p => p.UserAddress).Width(100).Title("االعنوان");;
 
-        columns.Bound(p => p.userstatus).Width(50).HeaderHtmlAttributes(new { @title = "الحالة" }).Width(100);
+        columns.Bound(p => p.userstatus).Width(30).ClientTemplate("<input type='checkbox' disabled='disabled' #= userstatus ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
 
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(100);
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
     })
     .ToolBar(toolBar =>
     {
-        toolBar.Create();
+        toolBar.Create().Text("اضافة مستخدم");
     })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات المستخدم")))
            .Pageable()
     .Sortable()
     .Scrollable()

@@ -150,6 +150,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -2033,6 +2034,9 @@
     <Content Include="Views\UsersProject\EditorTemplates\ProID.cshtml" />
     <Content Include="Views\UsersProject\EditorTemplates\UserID.cshtml" />
     <Content Include="Views\UsersProject\UsersProject.cshtml" />
+    <Content Include="Views\City\Cities.cshtml" />
+    <Content Include="Views\City\EditorTemplates\ProvinceID.cshtml" />
+    <Content Include="Views\Users\EditorTemplates\UserType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
