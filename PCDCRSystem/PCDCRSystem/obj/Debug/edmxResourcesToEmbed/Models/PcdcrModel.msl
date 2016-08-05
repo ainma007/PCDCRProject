@@ -76,16 +76,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ProjectControl">
-      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ProjectControl)">
-        <MappingFragment StoreEntitySet="ProjectControl">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Projects_table">
       <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.Projects_table)">
         <MappingFragment StoreEntitySet="Projects_table">
@@ -128,6 +118,16 @@
           <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
           <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectControl_table">
+      <EntityTypeMapping TypeName="PCDCRModel.ProjectControl_table">
+        <MappingFragment StoreEntitySet="ProjectControl_table">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

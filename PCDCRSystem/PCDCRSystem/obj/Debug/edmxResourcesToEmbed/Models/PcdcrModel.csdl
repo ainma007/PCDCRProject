@@ -42,16 +42,16 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Programs_Table" FromRole="Programs_Table" ToRole="ProjectControl" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-    <NavigationProperty Name="Projects_table" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Programs_Table" ToRole="Projects_table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="Projects_table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Programs_Table" ToRole="Projects_table" />
+    <NavigationProperty Name="ProjectControl_table" Relationship="PCDCRModel.FK_ProjectControl_Programs_Table" FromRole="Programs_Table" ToRole="ProjectControl_table" />
   </EntityType>
   <EntityType Name="ProjectActivities_Table">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StartDate" Type="DateTime" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
     <Property Name="Srarttime" Type="Time" Precision="7" />
     <Property Name="EndTime" Type="Time" Precision="7" />
     <Property Name="ActivitiesCategoryID" Type="Int32" />
@@ -79,35 +79,23 @@
     <NavigationProperty Name="ActivityPeopleCategory_Table" Relationship="Self.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" FromRole="ProjectActivities_Table" ToRole="ActivityPeopleCategory_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
     <NavigationProperty Name="City_Table" Relationship="Self.FK_ProjectActivities_Table_City_Table" FromRole="ProjectActivities_Table" ToRole="City_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
     <NavigationProperty Name="Corporation_Table" Relationship="Self.FK_ProjectActivities_Table_Corporation_Table" FromRole="ProjectActivities_Table" ToRole="Corporation_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-    <NavigationProperty Name="Projects_table" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="ProjectActivities_Table" ToRole="Projects_table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="Projects_table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="ProjectActivities_Table" ToRole="Projects_table" />
     <NavigationProperty Name="Province_Table" Relationship="Self.FK_ProjectActivities_Table_Province_Table" FromRole="ProjectActivities_Table" ToRole="Province_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
     <NavigationProperty Name="Users_Table" Relationship="Self.FK_ProjectActivities_Table_Users_Table" FromRole="ProjectActivities_Table" ToRole="Users_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-  </EntityType>
-  <EntityType Name="ProjectControl">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserID" Type="Int32" />
-    <Property Name="ProjectID" Type="Int32" />
-    <Property Name="Status" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Programs_Table" Relationship="Self.FK_ProjectControl_Programs_Table" FromRole="ProjectControl" ToRole="Programs_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-    <NavigationProperty Name="Projects_table" Relationship="Self.FK_ProjectControl_Projects_table" FromRole="ProjectControl" ToRole="Projects_table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-    <NavigationProperty Name="Users_Table" Relationship="Self.FK_ProjectControl_Users_Table" FromRole="ProjectControl" ToRole="Users_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
   </EntityType>
   <EntityType Name="Projects_table">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="StartDate" Type="DateTime" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Precision="0" />
-    <Property Name="ProjectStatus" Type="Boolean" Nullable="false" />
+    <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+    <Property Name="ProjectName" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="StartDate" Precision="0" Type="DateTime" />
+    <Property Name="EndDate" Precision="0" Type="DateTime" />
+    <Property Name="ProjectStatus" Nullable="false" Type="Boolean" />
     <Property Name="ProgrameID" Type="Int32" />
-    <NavigationProperty Name="Programs_Table" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Projects_table" ToRole="Programs_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="Projects_table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-    <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Projects_table" FromRole="Projects_table" ToRole="ProjectControl" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="Programs_Table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Projects_table" ToRole="Programs_Table" />
+    <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="ProjectActivities_Table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="Projects_table" ToRole="ProjectActivities_Table" />
+    <NavigationProperty Name="ProjectControl_table" Relationship="PCDCRModel.FK_ProjectControl_Projects_table" FromRole="Projects_table" ToRole="ProjectControl_table" />
   </EntityType>
   <EntityType Name="Province_Table">
     <Key>
@@ -141,7 +129,7 @@
     <Property Name="UserAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Users_Table" FromRole="Users_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-    <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Users_Table" FromRole="Users_Table" ToRole="ProjectControl" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="ProjectControl_table" Relationship="PCDCRModel.FK_ProjectControl_Users_Table" FromRole="Users_Table" ToRole="ProjectControl_table" />
   </EntityType>
   <Association Name="FK_ProjectActivities_Table_ActivitiesCategory_Table">
     <End Role="ActivitiesCategory_Table" Type="Self.ActivitiesCategory_Table" Multiplicity="0..1" />
@@ -203,21 +191,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ProjectControl_Programs_Table">
-    <End Role="Programs_Table" Type="Self.Programs_Table" Multiplicity="0..1" />
-    <End Role="ProjectControl" Type="Self.ProjectControl" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Programs_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectControl">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Projects_table_Programs_Table">
-    <End Role="Programs_Table" Type="Self.Programs_Table" Multiplicity="0..1" />
-    <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="*" />
+    <End Type="Self.Programs_Table" Multiplicity="0..1" Role="Programs_Table" />
+    <End Type="Self.Projects_table" Multiplicity="*" Role="Projects_table" />
     <ReferentialConstraint>
       <Principal Role="Programs_Table">
         <PropertyRef Name="ID" />
@@ -228,8 +204,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ProjectActivities_Table_Projects_table">
-    <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="0..1" />
-    <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
+    <End Type="Self.Projects_table" Multiplicity="0..1" Role="Projects_table" />
+    <End Type="Self.ProjectActivities_Table" Multiplicity="*" Role="ProjectActivities_Table" />
     <ReferentialConstraint>
       <Principal Role="Projects_table">
         <PropertyRef Name="ID" />
@@ -263,30 +239,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ProjectControl_Projects_table">
-    <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="0..1" />
-    <End Role="ProjectControl" Type="Self.ProjectControl" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Projects_table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectControl">
-        <PropertyRef Name="ProjectID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectControl_Users_Table">
-    <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
-    <End Role="ProjectControl" Type="Self.ProjectControl" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectControl">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="PCDCREntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ActivitiesCategory_Table" EntityType="Self.ActivitiesCategory_Table" />
     <EntitySet Name="ActivityPeopleCategory_Table" EntityType="Self.ActivityPeopleCategory_Table" />
@@ -294,7 +246,6 @@
     <EntitySet Name="Corporation_Table" EntityType="Self.Corporation_Table" />
     <EntitySet Name="Programs_Table" EntityType="Self.Programs_Table" />
     <EntitySet Name="ProjectActivities_Table" EntityType="Self.ProjectActivities_Table" />
-    <EntitySet Name="ProjectControl" EntityType="Self.ProjectControl" />
     <EntitySet Name="Projects_table" EntityType="Self.Projects_table" />
     <EntitySet Name="Province_Table" EntityType="Self.Province_Table" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -319,17 +270,13 @@
       <End Role="Corporation_Table" EntitySet="Corporation_Table" />
       <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
     </AssociationSet>
-    <AssociationSet Name="FK_ProjectControl_Programs_Table" Association="Self.FK_ProjectControl_Programs_Table">
-      <End Role="Programs_Table" EntitySet="Programs_Table" />
-      <End Role="ProjectControl" EntitySet="ProjectControl" />
-    </AssociationSet>
     <AssociationSet Name="FK_Projects_table_Programs_Table" Association="Self.FK_Projects_table_Programs_Table">
-      <End Role="Programs_Table" EntitySet="Programs_Table" />
-      <End Role="Projects_table" EntitySet="Projects_table" />
+      <End EntitySet="Programs_Table" Role="Programs_Table" />
+      <End EntitySet="Projects_table" Role="Projects_table" />
     </AssociationSet>
     <AssociationSet Name="FK_ProjectActivities_Table_Projects_table" Association="Self.FK_ProjectActivities_Table_Projects_table">
-      <End Role="Projects_table" EntitySet="Projects_table" />
-      <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+      <End EntitySet="Projects_table" Role="Projects_table" />
+      <End EntitySet="ProjectActivities_Table" Role="ProjectActivities_Table" />
     </AssociationSet>
     <AssociationSet Name="FK_ProjectActivities_Table_Province_Table" Association="Self.FK_ProjectActivities_Table_Province_Table">
       <End Role="Province_Table" EntitySet="Province_Table" />
@@ -339,13 +286,66 @@
       <End Role="Users_Table" EntitySet="Users_Table" />
       <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
     </AssociationSet>
-    <AssociationSet Name="FK_ProjectControl_Projects_table" Association="Self.FK_ProjectControl_Projects_table">
-      <End Role="Projects_table" EntitySet="Projects_table" />
-      <End Role="ProjectControl" EntitySet="ProjectControl" />
+    <EntitySet Name="ProjectControl_table" EntityType="PCDCRModel.ProjectControl_table" />
+    <AssociationSet Name="FK_ProjectControl_Programs_Table" Association="PCDCRModel.FK_ProjectControl_Programs_Table">
+      <End Role="Programs_Table" EntitySet="Programs_Table" />
+      <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
     </AssociationSet>
-    <AssociationSet Name="FK_ProjectControl_Users_Table" Association="Self.FK_ProjectControl_Users_Table">
+    <AssociationSet Name="FK_ProjectControl_Projects_table" Association="PCDCRModel.FK_ProjectControl_Projects_table">
+      <End Role="Projects_table" EntitySet="Projects_table" />
+      <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectControl_Users_Table" Association="PCDCRModel.FK_ProjectControl_Users_Table">
       <End Role="Users_Table" EntitySet="Users_Table" />
-      <End Role="ProjectControl" EntitySet="ProjectControl" />
+      <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="ProjectControl_table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="ProjectID" Type="Int32" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Programs_Table" Relationship="PCDCRModel.FK_ProjectControl_Programs_Table" FromRole="ProjectControl_table" ToRole="Programs_Table" />
+    <NavigationProperty Name="Projects_table" Relationship="PCDCRModel.FK_ProjectControl_Projects_table" FromRole="ProjectControl_table" ToRole="Projects_table" />
+    <NavigationProperty Name="Users_Table" Relationship="PCDCRModel.FK_ProjectControl_Users_Table" FromRole="ProjectControl_table" ToRole="Users_Table" />
+  </EntityType>
+  <Association Name="FK_ProjectControl_Programs_Table">
+    <End Type="PCDCRModel.Programs_Table" Role="Programs_Table" Multiplicity="0..1" />
+    <End Type="PCDCRModel.ProjectControl_table" Role="ProjectControl_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programs_Table">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectControl_table">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectControl_Projects_table">
+    <End Type="PCDCRModel.Projects_table" Role="Projects_table" Multiplicity="0..1" />
+    <End Type="PCDCRModel.ProjectControl_table" Role="ProjectControl_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects_table">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectControl_table">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectControl_Users_Table">
+    <End Type="PCDCRModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+    <End Type="PCDCRModel.ProjectControl_table" Role="ProjectControl_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_Table">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectControl_table">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

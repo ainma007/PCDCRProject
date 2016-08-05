@@ -19,17 +19,18 @@ namespace PCDCRSystem.Models
 
 
         [UIHint("Clientproject")]
-        public ProjectViewModel projects
+        public ProjectforeignKeyViewModel projects
         {
             get;
             set;
         }
-       
+
         [UIHint("ProID")]
         public int? ProID { get; set; }
 
+
         [UIHint("ClientUser")]
-        public UserViewModel Users
+        public userforeignKeyViewModel Users
         {
             get;
             set;

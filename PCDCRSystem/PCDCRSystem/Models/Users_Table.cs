@@ -18,7 +18,7 @@ namespace PCDCRSystem.Models
         public Users_Table()
         {
             this.ProjectActivities_Table = new HashSet<ProjectActivities_Table>();
-            this.ProjectControl = new HashSet<ProjectControl>();
+            this.ProjectControl_table = new HashSet<ProjectControl_table>();
         }
     
         public int ID { get; set; }
@@ -33,6 +33,6 @@ namespace PCDCRSystem.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProjectActivities_Table> ProjectActivities_Table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjectControl> ProjectControl { get; set; }
+        public virtual ICollection<ProjectControl_table> ProjectControl_table { get; set; }
     }
 }

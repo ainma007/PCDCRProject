@@ -17,16 +17,16 @@ namespace PCDCRSystem.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Programs_Table()
         {
-            this.ProjectControl = new HashSet<ProjectControl>();
             this.Projects_table = new HashSet<Projects_table>();
+            this.ProjectControl_table = new HashSet<ProjectControl_table>();
         }
     
         public int ID { get; set; }
         public string ProgramName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjectControl> ProjectControl { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Projects_table> Projects_table { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProjectControl_table> ProjectControl_table { get; set; }
     }
 }

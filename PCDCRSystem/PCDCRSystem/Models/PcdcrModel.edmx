@@ -4,332 +4,332 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PCDCRModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="PCDCRModelStoreContainer">
-    <EntitySet Name="ActivitiesCategory_Table" EntityType="PCDCRModel.Store.ActivitiesCategory_Table" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ActivityPeopleCategory_Table" EntityType="PCDCRModel.Store.ActivityPeopleCategory_Table" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="City_Table" EntityType="PCDCRModel.Store.City_Table" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Corporation_Table" EntityType="PCDCRModel.Store.Corporation_Table" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Programs_Table" EntityType="PCDCRModel.Store.Programs_Table" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ProjectActivities_Table" EntityType="PCDCRModel.Store.ProjectActivities_Table" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ProjectControl" EntityType="PCDCRModel.Store.ProjectControl" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Projects_table" EntityType="PCDCRModel.Store.Projects_table" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Province_Table" EntityType="PCDCRModel.Store.Province_Table" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sysdiagrams" EntityType="PCDCRModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Users_Table" EntityType="PCDCRModel.Store.Users_Table" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_ProjectActivities_Table_ActivitiesCategory_Table" Association="PCDCRModel.Store.FK_ProjectActivities_Table_ActivitiesCategory_Table">
-      <End Role="ActivitiesCategory_Table" EntitySet="ActivitiesCategory_Table" />
-      <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProjectActivities_Table_ActivityPeopleCategory_Table" Association="PCDCRModel.Store.FK_ProjectActivities_Table_ActivityPeopleCategory_Table">
-      <End Role="ActivityPeopleCategory_Table" EntitySet="ActivityPeopleCategory_Table" />
-      <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
-    </AssociationSet>
-    <AssociationSet Name="FK_City_Table_Province_Table" Association="PCDCRModel.Store.FK_City_Table_Province_Table">
-      <End Role="Province_Table" EntitySet="Province_Table" />
-      <End Role="City_Table" EntitySet="City_Table" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProjectActivities_Table_City_Table" Association="PCDCRModel.Store.FK_ProjectActivities_Table_City_Table">
-      <End Role="City_Table" EntitySet="City_Table" />
-      <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProjectActivities_Table_Corporation_Table" Association="PCDCRModel.Store.FK_ProjectActivities_Table_Corporation_Table">
-      <End Role="Corporation_Table" EntitySet="Corporation_Table" />
-      <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProjectControl_Programs_Table" Association="PCDCRModel.Store.FK_ProjectControl_Programs_Table">
-      <End Role="Programs_Table" EntitySet="Programs_Table" />
-      <End Role="ProjectControl" EntitySet="ProjectControl" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Projects_table_Programs_Table" Association="PCDCRModel.Store.FK_Projects_table_Programs_Table">
-      <End Role="Programs_Table" EntitySet="Programs_Table" />
-      <End Role="Projects_table" EntitySet="Projects_table" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProjectActivities_Table_Projects_table" Association="PCDCRModel.Store.FK_ProjectActivities_Table_Projects_table">
-      <End Role="Projects_table" EntitySet="Projects_table" />
-      <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProjectActivities_Table_Province_Table" Association="PCDCRModel.Store.FK_ProjectActivities_Table_Province_Table">
-      <End Role="Province_Table" EntitySet="Province_Table" />
-      <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProjectActivities_Table_Users_Table" Association="PCDCRModel.Store.FK_ProjectActivities_Table_Users_Table">
-      <End Role="Users_Table" EntitySet="Users_Table" />
-      <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProjectControl_Projects_table" Association="PCDCRModel.Store.FK_ProjectControl_Projects_table">
-      <End Role="Projects_table" EntitySet="Projects_table" />
-      <End Role="ProjectControl" EntitySet="ProjectControl" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProjectControl_Users_Table" Association="PCDCRModel.Store.FK_ProjectControl_Users_Table">
-      <End Role="Users_Table" EntitySet="Users_Table" />
-      <End Role="ProjectControl" EntitySet="ProjectControl" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="ActivitiesCategory_Table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="ActivitiesCategoryName" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="ActivityPeopleCategory_Table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="PeopleCategoryName" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="City_Table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CityName" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="ProvinceID" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Corporation_Table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CorporationName" Type="nvarchar" Nullable="true" MaxLength="100" />
-    <Property Name="CorporationPhone" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="CorporationAddress" Type="nvarchar" Nullable="true" MaxLength="100" />
-  </EntityType>
-  <EntityType Name="Programs_Table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProgramName" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="ProjectActivities_Table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StartDate" Type="datetime" Nullable="true" />
-    <Property Name="EndDate" Type="datetime" Nullable="true" />
-    <Property Name="Srarttime" Type="time" Nullable="true" Precision="7" />
-    <Property Name="EndTime" Type="time" Nullable="true" Precision="7" />
-    <Property Name="ActivitiesCategoryID" Type="int" Nullable="true" />
-    <Property Name="ActivityPeopleCategory" Type="int" Nullable="true" />
-    <Property Name="ProvinceID" Type="int" Nullable="true" />
-    <Property Name="CityID" Type="int" Nullable="true" />
-    <Property Name="CorporationID" Type="int" Nullable="true" />
-    <Property Name="ActivatorName" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="ActivatorMobil" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="CorporationContactRing" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="CorporationPhone" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="TotalPresence" Type="int" Nullable="true" />
-    <Property Name="TotalMale" Type="int" Nullable="true" />
-    <Property Name="TotlFemal" Type="int" Nullable="true" />
-    <Property Name="Emergency_Intervention" Type="nchar" Nullable="true" MaxLength="10" />
-    <Property Name="ProjectID" Type="int" Nullable="true" />
-    <Property Name="UserID" Type="int" Nullable="true" />
-    <Property Name="SaturdayDay" Type="bit" Nullable="true" />
-    <Property Name="SundayDay" Type="bit" Nullable="true" />
-    <Property Name="MondayDay" Type="bit" Nullable="true" />
-    <Property Name="tuesdayDay" Type="bit" Nullable="true" />
-    <Property Name="wednesdayDay" Type="bit" Nullable="true" />
-    <Property Name="thursdayDay" Type="bit" Nullable="true" />
-  </EntityType>
-  <EntityType Name="ProjectControl">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserID" Type="int" Nullable="true" />
-    <Property Name="ProjectID" Type="int" Nullable="true" />
-    <Property Name="Status" Type="bit" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Projects_table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProjectName" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="StartDate" Type="datetime" Nullable="true" />
-    <Property Name="EndDate" Type="datetime" Nullable="true" />
-    <Property Name="ProjectStatus" Type="bit" Nullable="false" />
-    <Property Name="ProgrameID" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Province_Table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProvinceName" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" Nullable="true" />
-    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Users_Table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FullName" Type="nvarchar" Nullable="true" MaxLength="100" />
-    <Property Name="UserName" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Password" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="UserType" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="UserPhone" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="UserAddress" Type="varchar(max)" Nullable="true" />
-    <Property Name="Status" Type="bit" Nullable="true" />
-  </EntityType>
-  <Association Name="FK_ProjectActivities_Table_ActivitiesCategory_Table">
-    <End Role="ActivitiesCategory_Table" Type="PCDCRModel.Store.ActivitiesCategory_Table" Multiplicity="0..1" />
-    <End Role="ProjectActivities_Table" Type="PCDCRModel.Store.ProjectActivities_Table" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ActivitiesCategory_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectActivities_Table">
-        <PropertyRef Name="ActivitiesCategoryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectActivities_Table_ActivityPeopleCategory_Table">
-    <End Role="ActivityPeopleCategory_Table" Type="PCDCRModel.Store.ActivityPeopleCategory_Table" Multiplicity="0..1" />
-    <End Role="ProjectActivities_Table" Type="PCDCRModel.Store.ProjectActivities_Table" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ActivityPeopleCategory_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectActivities_Table">
-        <PropertyRef Name="ActivityPeopleCategory" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_City_Table_Province_Table">
-    <End Role="Province_Table" Type="PCDCRModel.Store.Province_Table" Multiplicity="0..1" />
-    <End Role="City_Table" Type="PCDCRModel.Store.City_Table" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Province_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="City_Table">
-        <PropertyRef Name="ProvinceID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectActivities_Table_City_Table">
-    <End Role="City_Table" Type="PCDCRModel.Store.City_Table" Multiplicity="0..1" />
-    <End Role="ProjectActivities_Table" Type="PCDCRModel.Store.ProjectActivities_Table" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="City_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectActivities_Table">
-        <PropertyRef Name="CityID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectActivities_Table_Corporation_Table">
-    <End Role="Corporation_Table" Type="PCDCRModel.Store.Corporation_Table" Multiplicity="0..1" />
-    <End Role="ProjectActivities_Table" Type="PCDCRModel.Store.ProjectActivities_Table" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Corporation_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectActivities_Table">
-        <PropertyRef Name="CorporationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectControl_Programs_Table">
-    <End Role="Programs_Table" Type="PCDCRModel.Store.Programs_Table" Multiplicity="0..1" />
-    <End Role="ProjectControl" Type="PCDCRModel.Store.ProjectControl" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Programs_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectControl">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Projects_table_Programs_Table">
-    <End Role="Programs_Table" Type="PCDCRModel.Store.Programs_Table" Multiplicity="0..1" />
-    <End Role="Projects_table" Type="PCDCRModel.Store.Projects_table" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Programs_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Projects_table">
-        <PropertyRef Name="ProgrameID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectActivities_Table_Projects_table">
-    <End Role="Projects_table" Type="PCDCRModel.Store.Projects_table" Multiplicity="0..1" />
-    <End Role="ProjectActivities_Table" Type="PCDCRModel.Store.ProjectActivities_Table" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Projects_table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectActivities_Table">
-        <PropertyRef Name="ProjectID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectActivities_Table_Province_Table">
-    <End Role="Province_Table" Type="PCDCRModel.Store.Province_Table" Multiplicity="0..1" />
-    <End Role="ProjectActivities_Table" Type="PCDCRModel.Store.ProjectActivities_Table" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Province_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectActivities_Table">
-        <PropertyRef Name="ProvinceID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectActivities_Table_Users_Table">
-    <End Role="Users_Table" Type="PCDCRModel.Store.Users_Table" Multiplicity="0..1" />
-    <End Role="ProjectActivities_Table" Type="PCDCRModel.Store.ProjectActivities_Table" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectActivities_Table">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectControl_Projects_table">
-    <End Role="Projects_table" Type="PCDCRModel.Store.Projects_table" Multiplicity="0..1" />
-    <End Role="ProjectControl" Type="PCDCRModel.Store.ProjectControl" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Projects_table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectControl">
-        <PropertyRef Name="ProjectID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProjectControl_Users_Table">
-    <End Role="Users_Table" Type="PCDCRModel.Store.Users_Table" Multiplicity="0..1" />
-    <End Role="ProjectControl" Type="PCDCRModel.Store.ProjectControl" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectControl">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="PCDCRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActivitiesCategory_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ActivitiesCategoryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ActivityPeopleCategory_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PeopleCategoryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="City_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProvinceID" Type="int" />
+        </EntityType>
+        <EntityType Name="Corporation_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CorporationName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CorporationPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="CorporationAddress" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Programs_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProjectActivities_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Srarttime" Type="time" Precision="7" />
+          <Property Name="EndTime" Type="time" Precision="7" />
+          <Property Name="ActivitiesCategoryID" Type="int" />
+          <Property Name="ActivityPeopleCategory" Type="int" />
+          <Property Name="ProvinceID" Type="int" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="CorporationID" Type="int" />
+          <Property Name="ActivatorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActivatorMobil" Type="nvarchar" MaxLength="50" />
+          <Property Name="CorporationContactRing" Type="nvarchar" MaxLength="50" />
+          <Property Name="CorporationPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalPresence" Type="int" />
+          <Property Name="TotalMale" Type="int" />
+          <Property Name="TotlFemal" Type="int" />
+          <Property Name="Emergency_Intervention" Type="nchar" MaxLength="10" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="SaturdayDay" Type="bit" />
+          <Property Name="SundayDay" Type="bit" />
+          <Property Name="MondayDay" Type="bit" />
+          <Property Name="tuesdayDay" Type="bit" />
+          <Property Name="wednesdayDay" Type="bit" />
+          <Property Name="thursdayDay" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProjectControl_table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Projects_table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="ProjectStatus" Type="bit" Nullable="false" />
+          <Property Name="ProgrameID" Type="int" />
+        </EntityType>
+        <EntityType Name="Province_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProvinceName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserAddress" Type="varchar(max)" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <Association Name="FK_City_Table_Province_Table">
+          <End Role="Province_Table" Type="Self.Province_Table" Multiplicity="0..1" />
+          <End Role="City_Table" Type="Self.City_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="City_Table">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectActivities_Table_ActivitiesCategory_Table">
+          <End Role="ActivitiesCategory_Table" Type="Self.ActivitiesCategory_Table" Multiplicity="0..1" />
+          <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivitiesCategory_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectActivities_Table">
+              <PropertyRef Name="ActivitiesCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectActivities_Table_ActivityPeopleCategory_Table">
+          <End Role="ActivityPeopleCategory_Table" Type="Self.ActivityPeopleCategory_Table" Multiplicity="0..1" />
+          <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityPeopleCategory_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectActivities_Table">
+              <PropertyRef Name="ActivityPeopleCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectActivities_Table_City_Table">
+          <End Role="City_Table" Type="Self.City_Table" Multiplicity="0..1" />
+          <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectActivities_Table">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectActivities_Table_Corporation_Table">
+          <End Role="Corporation_Table" Type="Self.Corporation_Table" Multiplicity="0..1" />
+          <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Corporation_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectActivities_Table">
+              <PropertyRef Name="CorporationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectActivities_Table_Projects_table">
+          <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="0..1" />
+          <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects_table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectActivities_Table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectActivities_Table_Province_Table">
+          <End Role="Province_Table" Type="Self.Province_Table" Multiplicity="0..1" />
+          <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectActivities_Table">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectActivities_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectActivities_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectControl_Programs_Table">
+          <End Role="Programs_Table" Type="Self.Programs_Table" Multiplicity="0..1" />
+          <End Role="ProjectControl_table" Type="Self.ProjectControl_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programs_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectControl_table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectControl_Projects_table">
+          <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="0..1" />
+          <End Role="ProjectControl_table" Type="Self.ProjectControl_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects_table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectControl_table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectControl_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="ProjectControl_table" Type="Self.ProjectControl_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectControl_table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projects_table_Programs_Table">
+          <End Role="Programs_Table" Type="Self.Programs_Table" Multiplicity="0..1" />
+          <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programs_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Projects_table">
+              <PropertyRef Name="ProgrameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PCDCRModelStoreContainer">
+          <EntitySet Name="ActivitiesCategory_Table" EntityType="Self.ActivitiesCategory_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityPeopleCategory_Table" EntityType="Self.ActivityPeopleCategory_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City_Table" EntityType="Self.City_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Corporation_Table" EntityType="Self.Corporation_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Programs_Table" EntityType="Self.Programs_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectActivities_Table" EntityType="Self.ProjectActivities_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectControl_table" EntityType="Self.ProjectControl_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects_table" EntityType="Self.Projects_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province_Table" EntityType="Self.Province_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_Table" EntityType="Self.Users_Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_City_Table_Province_Table" Association="Self.FK_City_Table_Province_Table">
+            <End Role="Province_Table" EntitySet="Province_Table" />
+            <End Role="City_Table" EntitySet="City_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectActivities_Table_ActivitiesCategory_Table" Association="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table">
+            <End Role="ActivitiesCategory_Table" EntitySet="ActivitiesCategory_Table" />
+            <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectActivities_Table_ActivityPeopleCategory_Table" Association="Self.FK_ProjectActivities_Table_ActivityPeopleCategory_Table">
+            <End Role="ActivityPeopleCategory_Table" EntitySet="ActivityPeopleCategory_Table" />
+            <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectActivities_Table_City_Table" Association="Self.FK_ProjectActivities_Table_City_Table">
+            <End Role="City_Table" EntitySet="City_Table" />
+            <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectActivities_Table_Corporation_Table" Association="Self.FK_ProjectActivities_Table_Corporation_Table">
+            <End Role="Corporation_Table" EntitySet="Corporation_Table" />
+            <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectActivities_Table_Projects_table" Association="Self.FK_ProjectActivities_Table_Projects_table">
+            <End Role="Projects_table" EntitySet="Projects_table" />
+            <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectActivities_Table_Province_Table" Association="Self.FK_ProjectActivities_Table_Province_Table">
+            <End Role="Province_Table" EntitySet="Province_Table" />
+            <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectActivities_Table_Users_Table" Association="Self.FK_ProjectActivities_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectControl_Programs_Table" Association="Self.FK_ProjectControl_Programs_Table">
+            <End Role="Programs_Table" EntitySet="Programs_Table" />
+            <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectControl_Projects_table" Association="Self.FK_ProjectControl_Projects_table">
+            <End Role="Projects_table" EntitySet="Projects_table" />
+            <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectControl_Users_Table" Association="Self.FK_ProjectControl_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projects_table_Programs_Table" Association="Self.FK_Projects_table_Programs_Table">
+            <End Role="Programs_Table" EntitySet="Programs_Table" />
+            <End Role="Projects_table" EntitySet="Projects_table" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PCDCRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -375,16 +375,16 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Programs_Table" FromRole="Programs_Table" ToRole="ProjectControl" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-          <NavigationProperty Name="Projects_table" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Programs_Table" ToRole="Projects_table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+          <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="Projects_table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Programs_Table" ToRole="Projects_table" />
+          <NavigationProperty Name="ProjectControl_table" Relationship="PCDCRModel.FK_ProjectControl_Programs_Table" FromRole="Programs_Table" ToRole="ProjectControl_table" />
         </EntityType>
         <EntityType Name="ProjectActivities_Table">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StartDate" Type="DateTime" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
           <Property Name="Srarttime" Type="Time" Precision="7" />
           <Property Name="EndTime" Type="Time" Precision="7" />
           <Property Name="ActivitiesCategoryID" Type="Int32" />
@@ -412,35 +412,23 @@
           <NavigationProperty Name="ActivityPeopleCategory_Table" Relationship="Self.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" FromRole="ProjectActivities_Table" ToRole="ActivityPeopleCategory_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
           <NavigationProperty Name="City_Table" Relationship="Self.FK_ProjectActivities_Table_City_Table" FromRole="ProjectActivities_Table" ToRole="City_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
           <NavigationProperty Name="Corporation_Table" Relationship="Self.FK_ProjectActivities_Table_Corporation_Table" FromRole="ProjectActivities_Table" ToRole="Corporation_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-          <NavigationProperty Name="Projects_table" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="ProjectActivities_Table" ToRole="Projects_table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+          <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="Projects_table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="ProjectActivities_Table" ToRole="Projects_table" />
           <NavigationProperty Name="Province_Table" Relationship="Self.FK_ProjectActivities_Table_Province_Table" FromRole="ProjectActivities_Table" ToRole="Province_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
           <NavigationProperty Name="Users_Table" Relationship="Self.FK_ProjectActivities_Table_Users_Table" FromRole="ProjectActivities_Table" ToRole="Users_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-        </EntityType>
-        <EntityType Name="ProjectControl">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" />
-          <Property Name="ProjectID" Type="Int32" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Programs_Table" Relationship="Self.FK_ProjectControl_Programs_Table" FromRole="ProjectControl" ToRole="Programs_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-          <NavigationProperty Name="Projects_table" Relationship="Self.FK_ProjectControl_Projects_table" FromRole="ProjectControl" ToRole="Projects_table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-          <NavigationProperty Name="Users_Table" Relationship="Self.FK_ProjectControl_Users_Table" FromRole="ProjectControl" ToRole="Users_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
         </EntityType>
         <EntityType Name="Projects_table">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="StartDate" Type="DateTime" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Precision="0" />
-          <Property Name="ProjectStatus" Type="Boolean" Nullable="false" />
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="ProjectName" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="StartDate" Precision="0" Type="DateTime" />
+          <Property Name="EndDate" Precision="0" Type="DateTime" />
+          <Property Name="ProjectStatus" Nullable="false" Type="Boolean" />
           <Property Name="ProgrameID" Type="Int32" />
-          <NavigationProperty Name="Programs_Table" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Projects_table" ToRole="Programs_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-          <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="Projects_table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-          <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Projects_table" FromRole="Projects_table" ToRole="ProjectControl" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+          <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="Programs_Table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Projects_table" ToRole="Programs_Table" />
+          <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="ProjectActivities_Table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="Projects_table" ToRole="ProjectActivities_Table" />
+          <NavigationProperty Name="ProjectControl_table" Relationship="PCDCRModel.FK_ProjectControl_Projects_table" FromRole="Projects_table" ToRole="ProjectControl_table" />
         </EntityType>
         <EntityType Name="Province_Table">
           <Key>
@@ -474,7 +462,7 @@
           <Property Name="UserAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Users_Table" FromRole="Users_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-          <NavigationProperty Name="ProjectControl" Relationship="Self.FK_ProjectControl_Users_Table" FromRole="Users_Table" ToRole="ProjectControl" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+          <NavigationProperty Name="ProjectControl_table" Relationship="PCDCRModel.FK_ProjectControl_Users_Table" FromRole="Users_Table" ToRole="ProjectControl_table" />
         </EntityType>
         <Association Name="FK_ProjectActivities_Table_ActivitiesCategory_Table">
           <End Role="ActivitiesCategory_Table" Type="Self.ActivitiesCategory_Table" Multiplicity="0..1" />
@@ -536,21 +524,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProjectControl_Programs_Table">
-          <End Role="Programs_Table" Type="Self.Programs_Table" Multiplicity="0..1" />
-          <End Role="ProjectControl" Type="Self.ProjectControl" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Programs_Table">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProjectControl">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Projects_table_Programs_Table">
-          <End Role="Programs_Table" Type="Self.Programs_Table" Multiplicity="0..1" />
-          <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="*" />
+          <End Type="Self.Programs_Table" Multiplicity="0..1" Role="Programs_Table" />
+          <End Type="Self.Projects_table" Multiplicity="*" Role="Projects_table" />
           <ReferentialConstraint>
             <Principal Role="Programs_Table">
               <PropertyRef Name="ID" />
@@ -561,8 +537,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProjectActivities_Table_Projects_table">
-          <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="0..1" />
-          <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
+          <End Type="Self.Projects_table" Multiplicity="0..1" Role="Projects_table" />
+          <End Type="Self.ProjectActivities_Table" Multiplicity="*" Role="ProjectActivities_Table" />
           <ReferentialConstraint>
             <Principal Role="Projects_table">
               <PropertyRef Name="ID" />
@@ -596,30 +572,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProjectControl_Projects_table">
-          <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="0..1" />
-          <End Role="ProjectControl" Type="Self.ProjectControl" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Projects_table">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProjectControl">
-              <PropertyRef Name="ProjectID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProjectControl_Users_Table">
-          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
-          <End Role="ProjectControl" Type="Self.ProjectControl" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users_Table">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProjectControl">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="PCDCREntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ActivitiesCategory_Table" EntityType="Self.ActivitiesCategory_Table" />
           <EntitySet Name="ActivityPeopleCategory_Table" EntityType="Self.ActivityPeopleCategory_Table" />
@@ -627,7 +579,6 @@
           <EntitySet Name="Corporation_Table" EntityType="Self.Corporation_Table" />
           <EntitySet Name="Programs_Table" EntityType="Self.Programs_Table" />
           <EntitySet Name="ProjectActivities_Table" EntityType="Self.ProjectActivities_Table" />
-          <EntitySet Name="ProjectControl" EntityType="Self.ProjectControl" />
           <EntitySet Name="Projects_table" EntityType="Self.Projects_table" />
           <EntitySet Name="Province_Table" EntityType="Self.Province_Table" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -652,17 +603,13 @@
             <End Role="Corporation_Table" EntitySet="Corporation_Table" />
             <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectControl_Programs_Table" Association="Self.FK_ProjectControl_Programs_Table">
-            <End Role="Programs_Table" EntitySet="Programs_Table" />
-            <End Role="ProjectControl" EntitySet="ProjectControl" />
-          </AssociationSet>
           <AssociationSet Name="FK_Projects_table_Programs_Table" Association="Self.FK_Projects_table_Programs_Table">
-            <End Role="Programs_Table" EntitySet="Programs_Table" />
-            <End Role="Projects_table" EntitySet="Projects_table" />
+            <End EntitySet="Programs_Table" Role="Programs_Table" />
+            <End EntitySet="Projects_table" Role="Projects_table" />
           </AssociationSet>
           <AssociationSet Name="FK_ProjectActivities_Table_Projects_table" Association="Self.FK_ProjectActivities_Table_Projects_table">
-            <End Role="Projects_table" EntitySet="Projects_table" />
-            <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+            <End EntitySet="Projects_table" Role="Projects_table" />
+            <End EntitySet="ProjectActivities_Table" Role="ProjectActivities_Table" />
           </AssociationSet>
           <AssociationSet Name="FK_ProjectActivities_Table_Province_Table" Association="Self.FK_ProjectActivities_Table_Province_Table">
             <End Role="Province_Table" EntitySet="Province_Table" />
@@ -672,15 +619,68 @@
             <End Role="Users_Table" EntitySet="Users_Table" />
             <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectControl_Projects_table" Association="Self.FK_ProjectControl_Projects_table">
+          <EntitySet Name="ProjectControl_table" EntityType="PCDCRModel.ProjectControl_table" />
+          <AssociationSet Name="FK_ProjectControl_Programs_Table" Association="PCDCRModel.FK_ProjectControl_Programs_Table">
+            <End Role="Programs_Table" EntitySet="Programs_Table" />
+            <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectControl_Projects_table" Association="PCDCRModel.FK_ProjectControl_Projects_table">
             <End Role="Projects_table" EntitySet="Projects_table" />
-            <End Role="ProjectControl" EntitySet="ProjectControl" />
+            <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectControl_Users_Table" Association="Self.FK_ProjectControl_Users_Table">
+          <AssociationSet Name="FK_ProjectControl_Users_Table" Association="PCDCRModel.FK_ProjectControl_Users_Table">
             <End Role="Users_Table" EntitySet="Users_Table" />
-            <End Role="ProjectControl" EntitySet="ProjectControl" />
+            <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <EntityType Name="ProjectControl_table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Programs_Table" Relationship="PCDCRModel.FK_ProjectControl_Programs_Table" FromRole="ProjectControl_table" ToRole="Programs_Table" />
+          <NavigationProperty Name="Projects_table" Relationship="PCDCRModel.FK_ProjectControl_Projects_table" FromRole="ProjectControl_table" ToRole="Projects_table" />
+          <NavigationProperty Name="Users_Table" Relationship="PCDCRModel.FK_ProjectControl_Users_Table" FromRole="ProjectControl_table" ToRole="Users_Table" />
+        </EntityType>
+        <Association Name="FK_ProjectControl_Programs_Table">
+          <End Type="PCDCRModel.Programs_Table" Role="Programs_Table" Multiplicity="0..1" />
+          <End Type="PCDCRModel.ProjectControl_table" Role="ProjectControl_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programs_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectControl_table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectControl_Projects_table">
+          <End Type="PCDCRModel.Projects_table" Role="Projects_table" Multiplicity="0..1" />
+          <End Type="PCDCRModel.ProjectControl_table" Role="ProjectControl_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects_table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectControl_table">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectControl_Users_Table">
+          <End Type="PCDCRModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="PCDCRModel.ProjectControl_table" Role="ProjectControl_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectControl_table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -762,16 +762,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ProjectControl">
-      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ProjectControl)">
-        <MappingFragment StoreEntitySet="ProjectControl">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Projects_table">
       <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.Projects_table)">
         <MappingFragment StoreEntitySet="Projects_table">
@@ -817,6 +807,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <EntitySetMapping Name="ProjectControl_table">
+            <EntityTypeMapping TypeName="PCDCRModel.ProjectControl_table">
+              <MappingFragment StoreEntitySet="ProjectControl_table">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

@@ -30,8 +30,16 @@
 <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.all.min.js")"></script>
 <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.aspnetmvc.min.js")"></script>
 <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.aspnetmvc.min.js")"></script>
+    <script>
+    kendo.culture("en-GB");
+    </script>
 </head>
 <body class="rtl">
+   
+    <script src="@Url.Content("~/Scripts/cultures/kendo.culture.en-GB.min.js")"></script>
     <!-- BEGIN HEADER -->
     <div class="header navbar navbar-inverse">
         <!-- BEGIN TOP NAVIGATION BAR -->
@@ -214,7 +222,7 @@
                         </a>
                         <ul class="sub-menu">
                             <li><a href="@Url.Action("ProjectManagement", "Project")" class="elements"> إدارة المشاريع</a></li>
-                            <li><a href="@Url.Action("UserControlProject", "Project")" class="elements">إدارة مستخدمين المشاريع</a></li>
+                            <li><a href="@Url.Action("UsersProject", "UsersProject")" class="elements">إدارة مستخدمين المشاريع</a></li>
                         </ul>
                     </li>
                     <li class="">
@@ -293,7 +301,7 @@
             <div class="content">
                 <!-- BEGIN PAGE TITLE -->
                
-
+                
                 <div class="k-rtl">
                     @RenderSection("featured", required: false)
                     <section class="content-wrapper main-content clear-fix">

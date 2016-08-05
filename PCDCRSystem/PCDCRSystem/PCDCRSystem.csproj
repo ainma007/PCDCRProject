@@ -153,6 +153,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\UsersProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -168,6 +169,8 @@
     <Compile Include="Models\Corporation_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CtiyService.cs" />
+    <Compile Include="Models\CtiyViewModel.cs" />
     <Compile Include="Models\PcdcrModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -190,22 +193,25 @@
     <Compile Include="Models\ProjectActivities_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProjectControl.cs">
-      <DependentUpon>PcdcrModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ProjectControlService.cs" />
     <Compile Include="Models\ProjectControlViewModel.cs" />
+    <Compile Include="Models\ProjectControl_table.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjectforeignKeyViewModel.cs" />
     <Compile Include="Models\ProjectService.cs" />
     <Compile Include="Models\Projects_table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProjectViewModel.cs" />
+    <Compile Include="Models\ProvinceViewModel.cs" />
     <Compile Include="Models\Province_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\userforeignKeyViewModel.cs" />
     <Compile Include="Models\UserService.cs" />
     <Compile Include="Models\Users_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
@@ -1478,7 +1484,6 @@
       <DependentUpon>PcdcrModel.edmx</DependentUpon>
       <LastGenOutput>PcdcrModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\PcdcrModel.edmx.sql" />
     <Content Include="Models\PcdcrModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PcdcrModel.edmx</DependentUpon>
@@ -1730,6 +1735,10 @@
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cultures\kendo.culture.en-GB.min.js" />
+    <Content Include="Scripts\cultures\kendo.culture.en.min.js" />
+    <Content Include="Scripts\cultures\kendo.culture.nl-NL.min.js" />
+    <Content Include="Scripts\cultures\kendo.culture.nl.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\kendo.modernizr.custom.js" />
@@ -2021,9 +2030,9 @@
     <Content Include="Views\Project\ProjectManagement.cshtml" />
     <Content Include="Views\Users\UserManegment.cshtml" />
     <Content Include="Views\Project\EditorTemplates\ProgrameID.cshtml" />
-    <Content Include="Views\Project\UserControlProject.cshtml" />
-    <Content Include="Views\Project\EditorTemplates\ProID.cshtml" />
-    <Content Include="Views\Project\EditorTemplates\UserID.cshtml" />
+    <Content Include="Views\UsersProject\EditorTemplates\ProID.cshtml" />
+    <Content Include="Views\UsersProject\EditorTemplates\UserID.cshtml" />
+    <Content Include="Views\UsersProject\UsersProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

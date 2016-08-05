@@ -15,23 +15,26 @@ namespace PCDCRSystem.Models
             this.entities = entities;
         }
 
-        public IEnumerable<ProjectControlViewModel> Read()
+        public IEnumerable<ProjectControlViewModel> Readproject()
         {
-            return entities.ProjectControl.Select(control => new ProjectControlViewModel
+            return entities.ProjectControl_table.Select(control => new ProjectControlViewModel
             {
                 ID = control.ID,
                 ProID = control.ProjectID,
-                projects = new ProjectViewModel()
+                UserID = control.UserID,
+
+             
+
+                projects = new ProjectforeignKeyViewModel()
                 {
                     ProjectID = control.Projects_table.ID,
                     ProjectName = control.Projects_table.ProjectName
                 },
 
-                UserID = control.UserID,
-                Users = new UserViewModel()
+                Users = new userforeignKeyViewModel()
                 {
                     UserID = control.Users_Table.ID,
-                    Username = control.Users_Table.FullName
+                    FullName = control.Users_Table.FullName
                 },
 
                 Status = control.Status,
@@ -39,43 +42,43 @@ namespace PCDCRSystem.Models
         }
 
 
-        public void Create(ProjectControlViewModel control)
+        public void Createproject(ProjectControlViewModel control)
         {
-            var entity = new ProjectControl();
+            var entity = new ProjectControl_table();
 
             entity.ProjectID = control.ProID;
             entity.UserID = control.UserID;
             entity.Status = control.Status;
        
-            entities.ProjectControl.Add(entity);
+            entities.ProjectControl_table.Add(entity);
             entities.SaveChanges();
 
             control.ID = entity.ID;
         }
 
-        public void Update(ProjectControlViewModel control)
+        public void Updateproject(ProjectControlViewModel control)
         {
-            var entity = new ProjectControl();
+            var entity = new ProjectControl_table();
 
             entity.ID = control.ID;
-            entity.ProjectID = control.ProID;
+           entity.ProjectID = control.ProID;
             entity.UserID = control.UserID;
             entity.Status = control.Status;
 
-            entities.ProjectControl.Attach(entity);
+            entities.ProjectControl_table.Attach(entity);
             entities.Entry(entity).State = EntityState.Modified;
             entities.SaveChanges();
         }
 
-        public void Destroy(ProjectControlViewModel product)
+        public void Destroyproject(ProjectControlViewModel product)
         {
-            var entity = new ProjectControl();
+            var entity = new ProjectControl_table();
 
             entity.ID = product.ID;
 
-            entities.ProjectControl.Attach(entity);
+            entities.ProjectControl_table.Attach(entity);
 
-            entities.ProjectControl.Remove(entity);
+            entities.ProjectControl_table.Remove(entity);
 
             entities.SaveChanges();
         }
@@ -86,6 +89,18 @@ namespace PCDCRSystem.Models
             {
                 ProjectID = project.ID,
                 ProjectName = project.ProjectName
+
+
+            });
+        }
+
+        public IEnumerable<UserViewModel> GetUseres()
+        {
+            return entities.Users_Table.Select(user => new UserViewModel
+            {
+                UserID = user.ID,
+                FullName = user.FullName,
+              
 
 
             });

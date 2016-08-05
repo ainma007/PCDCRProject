@@ -8,14 +8,22 @@
     <h3>إدارة - <span class="semi-bold">المشاريع</span></h3>
 </div>
 
+<script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+<script src="@Url.Content("~/Scripts/kendo.all.min.js")"></script>
+<script src="@Url.Content("~/Scripts/kendo.aspnetmvc.min.js")"></script>
+<script src="@Url.Content("~/Scripts/cultures/kendo.culture.en-GB.min.js")"></script>
+
+<script>
+    kendo.culture("en-GB");
+</script>
 @(Html.Kendo().Grid<ProjectViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
         columns.Bound(p => p.ProjectID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
         columns.Bound(p => p.ProjectName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المشروع" }).Width(100);
-        columns.Bound(p => p.StartDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ البداية" }).Width(100).Format("{0:MM/dd/yyyy}");
-        columns.Bound(p => p.EndDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ النهاية" }).Width(100).Format("{0:MM/dd/yyyy}");
+        columns.Bound(p => p.StartDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ البداية" }).Width(100).Format("{0:dd/MM/yyyy}");
+        columns.Bound(p => p.EndDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ النهاية" }).Width(100).Format("{0:dd/MM/yyyy}");
 
         columns.ForeignKey(p => p.ProgrameID, (System.Collections.IEnumerable)ViewData["programs"], "ProgramID", "ProgramName")
                    .Title("البرنامج").Width(200);
@@ -28,6 +36,7 @@
         toolBar.Create();
     })
     .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    
            .Pageable()
     .Sortable()
     .Scrollable()

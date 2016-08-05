@@ -12,7 +12,7 @@ namespace PCDCRSystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ProjectControl
+    public partial class ProjectControl_table
     {
         public int ID { get; set; }
         public Nullable<int> UserID { get; set; }

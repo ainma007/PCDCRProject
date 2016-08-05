@@ -65,8 +65,8 @@ namespace PCDCRSystem.Models
 
             entity.ID = product.ProjectID;
             entity.ProjectName = product.ProjectName;
-            entity.StartDate = (DateTime)product.StartDate.Date;
-            entity.EndDate = (DateTime)product.EndDate.Date;
+            entity.StartDate = product.StartDate.Date;
+            entity.EndDate = product.EndDate.Date;
             entity.ProjectStatus = product.Status;
             entity.ProgrameID = product.ProgrameID;
 
