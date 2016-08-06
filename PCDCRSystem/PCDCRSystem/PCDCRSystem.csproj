@@ -151,6 +151,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\CorporationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -167,6 +168,8 @@
     <Compile Include="Models\City_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CorporationService.cs" />
+    <Compile Include="Models\CorporationViewModel.cs" />
     <Compile Include="Models\Corporation_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
@@ -2037,6 +2040,7 @@
     <Content Include="Views\City\Cities.cshtml" />
     <Content Include="Views\City\EditorTemplates\ProvinceID.cshtml" />
     <Content Include="Views\Users\EditorTemplates\UserType.cshtml" />
+    <Content Include="Views\Corporation\Corporation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

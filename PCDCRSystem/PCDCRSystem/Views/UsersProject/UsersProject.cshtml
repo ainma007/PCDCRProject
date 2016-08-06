@@ -37,6 +37,8 @@
         toolBar.Create().Text("اضافة مستخدم لمشروع");
     })
     .Editable(editable => editable.Mode(GridEditMode.PopUp))
+     .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
            .Pageable()
     .Sortable()
     .Scrollable()

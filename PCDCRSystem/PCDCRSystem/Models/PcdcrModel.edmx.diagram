@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="PCDCRModel.Projects_table" PointX="3" PointY="22.625" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PCDCRModel.Province_Table" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="PCDCRModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PCDCRModel.Users_Table" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_ActivitiesCategory_Table" ManuallyRouted="false" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" ManuallyRouted="false" />
         <AssociationConnector Association="PCDCRModel.FK_City_Table_Province_Table" ManuallyRouted="false" />
@@ -23,10 +22,11 @@
         <AssociationConnector ManuallyRouted="false" Association="PCDCRModel.FK_Projects_table_Programs_Table" />
         <AssociationConnector ManuallyRouted="false" Association="PCDCRModel.FK_ProjectActivities_Table_Projects_table" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_Province_Table" ManuallyRouted="false" />
-        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_Users_Table" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PCDCRModel.ProjectControl_table" Width="1.5" PointX="5.25" PointY="19.125" />
+        <EntityTypeShape EntityType="PCDCRModel.ProjectControl_table" Width="1.5" PointX="5.625" PointY="16.375" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectControl_Programs_Table" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectControl_Projects_table" />
+        <EntityTypeShape EntityType="PCDCRModel.Users_Table" Width="1.5" PointX="8.625" PointY="14.875" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_Users_Table" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectControl_Users_Table" />
         </Diagram>
     </edmx:Diagrams>

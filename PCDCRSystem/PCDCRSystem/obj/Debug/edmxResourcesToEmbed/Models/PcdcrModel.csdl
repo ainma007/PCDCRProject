@@ -81,7 +81,7 @@
     <NavigationProperty Name="Corporation_Table" Relationship="Self.FK_ProjectActivities_Table_Corporation_Table" FromRole="ProjectActivities_Table" ToRole="Corporation_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
     <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="Projects_table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="ProjectActivities_Table" ToRole="Projects_table" />
     <NavigationProperty Name="Province_Table" Relationship="Self.FK_ProjectActivities_Table_Province_Table" FromRole="ProjectActivities_Table" ToRole="Province_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-    <NavigationProperty Name="Users_Table" Relationship="Self.FK_ProjectActivities_Table_Users_Table" FromRole="ProjectActivities_Table" ToRole="Users_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+    <NavigationProperty Name="Users_Table" Relationship="PCDCRModel.FK_ProjectActivities_Table_Users_Table" FromRole="ProjectActivities_Table" ToRole="Users_Table" />
   </EntityType>
   <EntityType Name="Projects_table">
     <Key>
@@ -115,21 +115,6 @@
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="Users_Table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="UserAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Status" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_Users_Table" FromRole="Users_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-    <NavigationProperty Name="ProjectControl_table" Relationship="PCDCRModel.FK_ProjectControl_Users_Table" FromRole="Users_Table" ToRole="ProjectControl_table" />
   </EntityType>
   <Association Name="FK_ProjectActivities_Table_ActivitiesCategory_Table">
     <End Role="ActivitiesCategory_Table" Type="Self.ActivitiesCategory_Table" Multiplicity="0..1" />
@@ -227,18 +212,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ProjectActivities_Table_Users_Table">
-    <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
-    <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users_Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProjectActivities_Table">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="PCDCREntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ActivitiesCategory_Table" EntityType="Self.ActivitiesCategory_Table" />
     <EntitySet Name="ActivityPeopleCategory_Table" EntityType="Self.ActivityPeopleCategory_Table" />
@@ -249,7 +222,6 @@
     <EntitySet Name="Projects_table" EntityType="Self.Projects_table" />
     <EntitySet Name="Province_Table" EntityType="Self.Province_Table" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="Users_Table" EntityType="Self.Users_Table" />
     <AssociationSet Name="FK_ProjectActivities_Table_ActivitiesCategory_Table" Association="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table">
       <End Role="ActivitiesCategory_Table" EntitySet="ActivitiesCategory_Table" />
       <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
@@ -282,10 +254,6 @@
       <End Role="Province_Table" EntitySet="Province_Table" />
       <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
     </AssociationSet>
-    <AssociationSet Name="FK_ProjectActivities_Table_Users_Table" Association="Self.FK_ProjectActivities_Table_Users_Table">
-      <End Role="Users_Table" EntitySet="Users_Table" />
-      <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
-    </AssociationSet>
     <EntitySet Name="ProjectControl_table" EntityType="PCDCRModel.ProjectControl_table" />
     <AssociationSet Name="FK_ProjectControl_Programs_Table" Association="PCDCRModel.FK_ProjectControl_Programs_Table">
       <End Role="Programs_Table" EntitySet="Programs_Table" />
@@ -294,6 +262,11 @@
     <AssociationSet Name="FK_ProjectControl_Projects_table" Association="PCDCRModel.FK_ProjectControl_Projects_table">
       <End Role="Projects_table" EntitySet="Projects_table" />
       <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
+    </AssociationSet>
+    <EntitySet Name="Users_Table" EntityType="PCDCRModel.Users_Table" />
+    <AssociationSet Name="FK_ProjectActivities_Table_Users_Table" Association="PCDCRModel.FK_ProjectActivities_Table_Users_Table">
+      <End Role="Users_Table" EntitySet="Users_Table" />
+      <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
     </AssociationSet>
     <AssociationSet Name="FK_ProjectControl_Users_Table" Association="PCDCRModel.FK_ProjectControl_Users_Table">
       <End Role="Users_Table" EntitySet="Users_Table" />
@@ -333,6 +306,33 @@
       </Principal>
       <Dependent Role="ProjectControl_table">
         <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Users_Table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ProjectActivities_Table" Relationship="PCDCRModel.FK_ProjectActivities_Table_Users_Table" FromRole="Users_Table" ToRole="ProjectActivities_Table" />
+    <NavigationProperty Name="ProjectControl_table" Relationship="PCDCRModel.FK_ProjectControl_Users_Table" FromRole="Users_Table" ToRole="ProjectControl_table" />
+  </EntityType>
+  <Association Name="FK_ProjectActivities_Table_Users_Table">
+    <End Type="PCDCRModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+    <End Type="PCDCRModel.ProjectActivities_Table" Role="ProjectActivities_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_Table">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectActivities_Table">
+        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
