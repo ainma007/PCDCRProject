@@ -24,7 +24,11 @@
 
         columns.Bound(p => p.userstatus).Width(30).ClientTemplate("<input type='checkbox' disabled='disabled' #= userstatus ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
 
-        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
+        columns.Command(command => {
+        command.Edit().Text("تعديل");
+        command.Destroy().Text("حذف");
+       // command.Custom("أختار").Click("selectrow");
+    }).Width(100);
     })
     .ToolBar(toolBar =>
     {
@@ -42,7 +46,6 @@
         .Ajax()
         .PageSize(20)
         .ServerOperation(false)
-        .Events(events => events.Error("errorHandler"))
         .Model(model =>
         {
             model.Id(p => p.UserID);
@@ -53,20 +56,29 @@
         .Create(create => create.Action("User_Create", "Users"))
         .Destroy(destroy => destroy.Action("User_Destroy", "Users"))
     )
+          .Events(events => events.Change("selectrow"))
 )
 
-<script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
-                }
-            });
-            alert(message);
-        }
+<script >
+
+    function selectrow(arg) {
+        var Thegrid = $("#grid").data("kendoGrid");
+        var item = Thegrid.dataItem(Thegrid.select());
+  
+        alert("User Id = " + item.UserID );
     }
+    //function errorHandler(e) {
+    //    if (e.errors) {
+    //        var message = "Errors:\n";
+    //        $.each(e.errors, function (key, value) {
+    //            if ('errors' in value) {
+    //                $.each(value.errors, function() {
+    //                    message += this + "\n";
+    //                });
+    //            }
+    //        });
+    //        alert(message);
+    //    }
+    //}
+
 </script>
