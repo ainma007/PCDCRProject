@@ -35,7 +35,7 @@
     {
         toolBar.Create().Text("اضافة مشروع");
     })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات المشروع")))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
            .Pageable()

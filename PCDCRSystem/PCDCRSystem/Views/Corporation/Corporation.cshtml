@@ -29,7 +29,7 @@
     {
         toolBar.Create().Text("اضافة مؤسسة جديدة");
     })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات المؤسسة")))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
            .Pageable()

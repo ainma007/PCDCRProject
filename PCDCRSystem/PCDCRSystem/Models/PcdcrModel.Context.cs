@@ -26,7 +26,6 @@ namespace PCDCRSystem.Models
         }
     
         public virtual DbSet<ActivitiesCategory_Table> ActivitiesCategory_Table { get; set; }
-        public virtual DbSet<ActivityPeopleCategory_Table> ActivityPeopleCategory_Table { get; set; }
         public virtual DbSet<City_Table> City_Table { get; set; }
         public virtual DbSet<Corporation_Table> Corporation_Table { get; set; }
         public virtual DbSet<Programs_Table> Programs_Table { get; set; }
@@ -36,5 +35,6 @@ namespace PCDCRSystem.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<ProjectControl_table> ProjectControl_table { get; set; }
         public virtual DbSet<Users_Table> Users_Table { get; set; }
+        public virtual DbSet<ActivityPeopleCategory_Table> ActivityPeopleCategory_Table { get; set; }
     }
 }

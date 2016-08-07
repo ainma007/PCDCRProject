@@ -9,14 +9,14 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ActivitiesCategoryName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ActivityPeopleCategory_Table">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PeopleCategoryName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="City_Table">
@@ -220,18 +220,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProjectControl_Programs_Table">
-          <End Role="Programs_Table" Type="Self.Programs_Table" Multiplicity="0..1" />
-          <End Role="ProjectControl_table" Type="Self.ProjectControl_table" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Programs_Table">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProjectControl_table">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ProjectControl_Projects_table">
           <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="0..1" />
           <End Role="ProjectControl_table" Type="Self.ProjectControl_table" Multiplicity="*" />
@@ -312,10 +300,6 @@
             <End Role="Users_Table" EntitySet="Users_Table" />
             <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectControl_Programs_Table" Association="Self.FK_ProjectControl_Programs_Table">
-            <End Role="Programs_Table" EntitySet="Programs_Table" />
-            <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProjectControl_Projects_table" Association="Self.FK_ProjectControl_Projects_table">
             <End Role="Projects_table" EntitySet="Projects_table" />
             <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
@@ -337,17 +321,9 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ActivitiesCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table" FromRole="ActivitiesCategory_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-        </EntityType>
-        <EntityType Name="ActivityPeopleCategory_Table">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="PeopleCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ProjectActivities_Table" Relationship="Self.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" FromRole="ActivityPeopleCategory_Table" ToRole="ProjectActivities_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
         </EntityType>
         <EntityType Name="City_Table">
           <Key>
@@ -409,12 +385,12 @@
           <Property Name="wednesdayDay" Type="Boolean" />
           <Property Name="thursdayDay" Type="Boolean" />
           <NavigationProperty Name="ActivitiesCategory_Table" Relationship="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table" FromRole="ProjectActivities_Table" ToRole="ActivitiesCategory_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
-          <NavigationProperty Name="ActivityPeopleCategory_Table" Relationship="Self.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" FromRole="ProjectActivities_Table" ToRole="ActivityPeopleCategory_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
           <NavigationProperty Name="City_Table" Relationship="Self.FK_ProjectActivities_Table_City_Table" FromRole="ProjectActivities_Table" ToRole="City_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
           <NavigationProperty Name="Corporation_Table" Relationship="Self.FK_ProjectActivities_Table_Corporation_Table" FromRole="ProjectActivities_Table" ToRole="Corporation_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
           <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="Projects_table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_ProjectActivities_Table_Projects_table" FromRole="ProjectActivities_Table" ToRole="Projects_table" />
           <NavigationProperty Name="Province_Table" Relationship="Self.FK_ProjectActivities_Table_Province_Table" FromRole="ProjectActivities_Table" ToRole="Province_Table" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
           <NavigationProperty Name="Users_Table" Relationship="PCDCRModel.FK_ProjectActivities_Table_Users_Table" FromRole="ProjectActivities_Table" ToRole="Users_Table" />
+          <NavigationProperty Name="ActivityPeopleCategory_Table" Relationship="PCDCRModel.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" FromRole="ProjectActivities_Table" ToRole="ActivityPeopleCategory_Table" />
         </EntityType>
         <EntityType Name="Projects_table">
           <Key>
@@ -458,18 +434,6 @@
             </Principal>
             <Dependent Role="ProjectActivities_Table">
               <PropertyRef Name="ActivitiesCategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProjectActivities_Table_ActivityPeopleCategory_Table">
-          <End Role="ActivityPeopleCategory_Table" Type="Self.ActivityPeopleCategory_Table" Multiplicity="0..1" />
-          <End Role="ProjectActivities_Table" Type="Self.ProjectActivities_Table" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ActivityPeopleCategory_Table">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProjectActivities_Table">
-              <PropertyRef Name="ActivityPeopleCategory" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -547,7 +511,6 @@
         </Association>
         <EntityContainer Name="PCDCREntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ActivitiesCategory_Table" EntityType="Self.ActivitiesCategory_Table" />
-          <EntitySet Name="ActivityPeopleCategory_Table" EntityType="Self.ActivityPeopleCategory_Table" />
           <EntitySet Name="City_Table" EntityType="Self.City_Table" />
           <EntitySet Name="Corporation_Table" EntityType="Self.Corporation_Table" />
           <EntitySet Name="Programs_Table" EntityType="Self.Programs_Table" />
@@ -557,10 +520,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_ProjectActivities_Table_ActivitiesCategory_Table" Association="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table">
             <End Role="ActivitiesCategory_Table" EntitySet="ActivitiesCategory_Table" />
-            <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectActivities_Table_ActivityPeopleCategory_Table" Association="Self.FK_ProjectActivities_Table_ActivityPeopleCategory_Table">
-            <End Role="ActivityPeopleCategory_Table" EntitySet="ActivityPeopleCategory_Table" />
             <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
           </AssociationSet>
           <AssociationSet Name="FK_City_Table_Province_Table" Association="Self.FK_City_Table_Province_Table">
@@ -605,6 +564,11 @@
             <End Role="Users_Table" EntitySet="Users_Table" />
             <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
           </AssociationSet>
+          <EntitySet Name="ActivityPeopleCategory_Table" EntityType="PCDCRModel.ActivityPeopleCategory_Table" />
+          <AssociationSet Name="FK_ProjectActivities_Table_ActivityPeopleCategory_Table" Association="PCDCRModel.FK_ProjectActivities_Table_ActivityPeopleCategory_Table">
+            <End Role="ActivityPeopleCategory_Table" EntitySet="ActivityPeopleCategory_Table" />
+            <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="ProjectControl_table">
           <Key>
@@ -614,7 +578,6 @@
           <Property Name="UserID" Type="Int32" />
           <Property Name="ProjectID" Type="Int32" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Programs_Table" Relationship="PCDCRModel.FK_ProjectControl_Programs_Table" FromRole="ProjectControl_table" ToRole="Programs_Table" />
           <NavigationProperty Name="Projects_table" Relationship="PCDCRModel.FK_ProjectControl_Projects_table" FromRole="ProjectControl_table" ToRole="Projects_table" />
           <NavigationProperty Name="Users_Table" Relationship="PCDCRModel.FK_ProjectControl_Users_Table" FromRole="ProjectControl_table" ToRole="Users_Table" />
         </EntityType>
@@ -681,6 +644,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ActivityPeopleCategory_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PeopleCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProjectActivities_Table" Relationship="PCDCRModel.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" FromRole="ActivityPeopleCategory_Table" ToRole="ProjectActivities_Table" />
+        </EntityType>
+        <Association Name="FK_ProjectActivities_Table_ActivityPeopleCategory_Table">
+          <End Type="PCDCRModel.ActivityPeopleCategory_Table" Role="ActivityPeopleCategory_Table" Multiplicity="0..1" />
+          <End Type="PCDCRModel.ProjectActivities_Table" Role="ProjectActivities_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityPeopleCategory_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectActivities_Table">
+              <PropertyRef Name="ActivityPeopleCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -692,14 +675,6 @@
         <MappingFragment StoreEntitySet="ActivitiesCategory_Table">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ActivitiesCategoryName" ColumnName="ActivitiesCategoryName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ActivityPeopleCategory_Table">
-      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ActivityPeopleCategory_Table)">
-        <MappingFragment StoreEntitySet="ActivityPeopleCategory_Table">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -813,6 +788,14 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityPeopleCategory_Table">
+            <EntityTypeMapping TypeName="PCDCRModel.ActivityPeopleCategory_Table">
+              <MappingFragment StoreEntitySet="ActivityPeopleCategory_Table">
+                <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

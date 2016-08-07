@@ -9,10 +9,7 @@
     <i class="icon-custom-left"></i>
     <h3>التحكم - <span class="semi-bold">بمستخدمين المشاريع</span></h3>
 </div>
-<script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
-<script src="@Url.Content("~/Scripts/kendo.all.min.js")"></script>
-<script src="@Url.Content("~/Scripts/kendo.aspnetmvc.min.js")"></script>
-<script src="@Url.Content("~/Scripts/cultures/kendo.culture.en-GB.min.js")"></script>
+
 <script>
     kendo.culture("en-GB");
 </script>
@@ -36,7 +33,7 @@
     {
         toolBar.Create().Text("اضافة مستخدم لمشروع");
     })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات مستخدم المشروع")))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
            .Pageable()

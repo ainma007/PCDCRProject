@@ -9,14 +9,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ActivityPeopleCategory_Table">
-      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ActivityPeopleCategory_Table)">
-        <MappingFragment StoreEntitySet="ActivityPeopleCategory_Table">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="City_Table">
       <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.City_Table)">
         <MappingFragment StoreEntitySet="City_Table">
@@ -127,6 +119,14 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityPeopleCategory_Table">
+      <EntityTypeMapping TypeName="PCDCRModel.ActivityPeopleCategory_Table">
+        <MappingFragment StoreEntitySet="ActivityPeopleCategory_Table">
+          <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -42,11 +42,11 @@ namespace PCDCRSystem.Models
         public Nullable<bool> thursdayDay { get; set; }
     
         public virtual ActivitiesCategory_Table ActivitiesCategory_Table { get; set; }
-        public virtual ActivityPeopleCategory_Table ActivityPeopleCategory_Table { get; set; }
         public virtual City_Table City_Table { get; set; }
         public virtual Corporation_Table Corporation_Table { get; set; }
         public virtual Projects_table Projects_table { get; set; }
         public virtual Province_Table Province_Table { get; set; }
         public virtual Users_Table Users_Table { get; set; }
+        public virtual ActivityPeopleCategory_Table ActivityPeopleCategory_Table { get; set; }
     }
 }

@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="dd852cc26df24f94a5841befb8b45ece" Name="Diagram1">
         <EntityTypeShape EntityType="PCDCRModel.ActivitiesCategory_Table" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PCDCRModel.ActivityPeopleCategory_Table" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PCDCRModel.City_Table" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PCDCRModel.Corporation_Table" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PCDCRModel.Programs_Table" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
@@ -15,7 +14,6 @@
         <EntityTypeShape EntityType="PCDCRModel.Province_Table" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="PCDCRModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_ActivitiesCategory_Table" ManuallyRouted="false" />
-        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" ManuallyRouted="false" />
         <AssociationConnector Association="PCDCRModel.FK_City_Table_Province_Table" ManuallyRouted="false" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_City_Table" ManuallyRouted="false" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_Corporation_Table" ManuallyRouted="false" />
@@ -28,6 +26,8 @@
         <EntityTypeShape EntityType="PCDCRModel.Users_Table" Width="1.5" PointX="8.625" PointY="14.875" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_Users_Table" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectControl_Users_Table" />
+        <EntityTypeShape EntityType="PCDCRModel.ActivityPeopleCategory_Table" Width="1.5" PointX="7.375" PointY="0.875" />
+        <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

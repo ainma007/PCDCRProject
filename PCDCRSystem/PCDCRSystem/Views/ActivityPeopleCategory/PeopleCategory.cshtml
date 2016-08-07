@@ -1,11 +1,11 @@
 ﻿@using PCDCRSystem.Models
 @{
-    ViewBag.Title = "إدارة المشاريع";
+    ViewBag.Title = "أدارة تصنيفات الأشخاص";
 }
 
 <div class="page-title">
     <i class="icon-custom-left"></i>
-    <h3>إدارة - <span class="semi-bold">المدن</span></h3>
+    <h3>إدارة - <span class="semi-bold">تصنيفات الأنشطة</span></h3>
 </div>
 
 
@@ -13,24 +13,21 @@
 <script>
     kendo.culture("en-GB");
 </script>
-@(Html.Kendo().Grid<CtiyViewModel>()
+@(Html.Kendo().Grid<ActivityPeopleCategoryViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
-        columns.Bound(p => p.CityID).Width(50).Hidden();
-        columns.Bound(p => p.CityName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المدينة" }).Width(100).Title("المدينة");
-      
+        columns.Bound(p => p.ActivityPeopleCategoryID).Width(50).Hidden();
+        columns.Bound(p => p.ActivityPeopleCategoryName).Width(200).HeaderHtmlAttributes(new { @title = "اسم التصنيف" }).Width(100).Title("التصنيف");
 
-        columns.ForeignKey(p => p.ProvinceID, (System.Collections.IEnumerable)ViewData["province"], "ProvinceID", "ProvinceName")
-                   .Title("المحافظة").Width(100);
 
         columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
     })
     .ToolBar(toolBar =>
     {
-        toolBar.Create().Text("اضافة مدينة جديدة");
+        toolBar.Create().Text("اضافة تصنيف جديد ");
     })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات المدينة")))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات التصنيف")))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
            .Pageable()
@@ -42,17 +39,17 @@
         .Ajax()
         .PageSize(20)
         .ServerOperation(false)
+
         .Events(events => events.Error("errorHandler"))
         .Model(model =>
         {
-            model.Id(p => p.CityID);
-            model.Field(p => p.CityID).Editable(false);
-            model.Field(p => p.ProvinceID).DefaultValue(1);
+            model.Id(p => p.ActivityPeopleCategoryID);
+            model.Field(p => p.ActivityPeopleCategoryID).Editable(false);
         })
-        .Read(read => read.Action("city_Read", "City"))
-        .Update(update => update.Action("city_Update", "City"))
-        .Create(create => create.Action("city_Create", "City"))
-        .Destroy(destroy => destroy.Action("city_Destroy", "City"))
+        .Read(read => read.Action("ActivitiesCategory_Read", "ActivityPeopleCategory"))
+        .Update(update => update.Action("ActivitiesCategory_Update", "ActivityPeopleCategory"))
+        .Create(create => create.Action("ActivitiesCategory_Create", "ActivityPeopleCategory"))
+        .Destroy(destroy => destroy.Action("ActivitiesCategory_Destroy", "ActivityPeopleCategory"))
     )
 )
 

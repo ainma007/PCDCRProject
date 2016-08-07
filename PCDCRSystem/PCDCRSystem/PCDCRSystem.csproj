@@ -150,6 +150,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ActivitiesCategoryController.cs" />
+    <Compile Include="Controllers\ActivityPeopleCategoryController.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\CorporationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -159,9 +161,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActivitiesCategoryService.cs" />
+    <Compile Include="Models\ActivitiesCategoryViewModel.cs" />
     <Compile Include="Models\ActivitiesCategory_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActivityPeopleCategorySerivce.cs" />
+    <Compile Include="Models\ActivityPeopleCategoryViewModel.cs" />
     <Compile Include="Models\ActivityPeopleCategory_Table.cs">
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
@@ -2041,6 +2047,8 @@
     <Content Include="Views\City\EditorTemplates\ProvinceID.cshtml" />
     <Content Include="Views\Users\EditorTemplates\UserType.cshtml" />
     <Content Include="Views\Corporation\Corporation.cshtml" />
+    <Content Include="Views\ActivitiesCategory\ActivitiesCategory.cshtml" />
+    <Content Include="Views\ActivityPeopleCategory\PeopleCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
