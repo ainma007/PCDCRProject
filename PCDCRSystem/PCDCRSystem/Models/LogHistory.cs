@@ -12,14 +12,15 @@ namespace PCDCRSystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ProjectControl_table
+    public partial class LogHistory
     {
-        public int ID { get; set; }
-        public Nullable<int> UserID { get; set; }
-        public Nullable<int> ProjectID { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<System.DateTime> LogInTime { get; set; }
+        public Nullable<System.DateTime> LogOutTime { get; set; }
+        public string Status { get; set; }
+        public string TotalTime { get; set; }
     
-        public virtual Projects_table Projects_table { get; set; }
         public virtual Users_Table Users_Table { get; set; }
     }
 }

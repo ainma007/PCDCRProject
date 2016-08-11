@@ -150,6 +150,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivitiesCategoryController.cs" />
     <Compile Include="Controllers\ActivityPeopleCategoryController.cs" />
     <Compile Include="Controllers\CityController.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InformationClass.cs" />
     <Compile Include="Models\ActivitiesCategoryService.cs" />
     <Compile Include="Models\ActivitiesCategoryViewModel.cs" />
     <Compile Include="Models\ActivitiesCategory_Table.cs">
@@ -181,6 +183,9 @@
     </Compile>
     <Compile Include="Models\CtiyService.cs" />
     <Compile Include="Models\CtiyViewModel.cs" />
+    <Compile Include="Models\LogHistory.cs">
+      <DependentUpon>PcdcrModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PcdcrModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2049,6 +2054,8 @@
     <Content Include="Views\Corporation\Corporation.cshtml" />
     <Content Include="Views\ActivitiesCategory\ActivitiesCategory.cshtml" />
     <Content Include="Views\ActivityPeopleCategory\PeopleCategory.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\LoggedIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

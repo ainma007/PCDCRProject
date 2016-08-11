@@ -28,6 +28,8 @@
         <AssociationConnector Association="PCDCRModel.FK_ProjectControl_Users_Table" />
         <EntityTypeShape EntityType="PCDCRModel.ActivityPeopleCategory_Table" Width="1.5" PointX="7.375" PointY="0.875" />
         <AssociationConnector Association="PCDCRModel.FK_ProjectActivities_Table_ActivityPeopleCategory_Table" />
+        <EntityTypeShape EntityType="PCDCRModel.LogHistory" Width="1.5" PointX="10.875" PointY="15.25" />
+        <AssociationConnector Association="PCDCRModel.FK_LogHistory_Users_Table" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

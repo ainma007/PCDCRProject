@@ -36,6 +36,17 @@
           <Property Name="CorporationPhone" Type="nvarchar" MaxLength="50" />
           <Property Name="CorporationAddress" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="LogHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="LogInTime" Type="datetime" />
+          <Property Name="LogOutTime" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="TotalTime" Type="nvarchar" MaxLength="30" />
+        </EntityType>
         <EntityType Name="Programs_Table">
           <Key>
             <PropertyRef Name="ID" />
@@ -133,6 +144,18 @@
             </Principal>
             <Dependent Role="City_Table">
               <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogHistory_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="LogHistory" Type="Self.LogHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogHistory">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -261,6 +284,7 @@
           <EntitySet Name="ActivityPeopleCategory_Table" EntityType="Self.ActivityPeopleCategory_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City_Table" EntityType="Self.City_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Corporation_Table" EntityType="Self.Corporation_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogHistory" EntityType="Self.LogHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Programs_Table" EntityType="Self.Programs_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectActivities_Table" EntityType="Self.ProjectActivities_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectControl_table" EntityType="Self.ProjectControl_table" Schema="dbo" store:Type="Tables" />
@@ -271,6 +295,10 @@
           <AssociationSet Name="FK_City_Table_Province_Table" Association="Self.FK_City_Table_Province_Table">
             <End Role="Province_Table" EntitySet="Province_Table" />
             <End Role="City_Table" EntitySet="City_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogHistory_Users_Table" Association="Self.FK_LogHistory_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="LogHistory" EntitySet="LogHistory" />
           </AssociationSet>
           <AssociationSet Name="FK_ProjectActivities_Table_ActivitiesCategory_Table" Association="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table">
             <End Role="ActivitiesCategory_Table" EntitySet="ActivitiesCategory_Table" />
@@ -569,6 +597,11 @@
             <End Role="ActivityPeopleCategory_Table" EntitySet="ActivityPeopleCategory_Table" />
             <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
           </AssociationSet>
+          <EntitySet Name="LogHistory" EntityType="PCDCRModel.LogHistory" />
+          <AssociationSet Name="FK_LogHistory_Users_Table" Association="PCDCRModel.FK_LogHistory_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="LogHistory" EntitySet="LogHistory" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="ProjectControl_table">
           <Key>
@@ -577,7 +610,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" />
           <Property Name="ProjectID" Type="Int32" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="Projects_table" Relationship="PCDCRModel.FK_ProjectControl_Projects_table" FromRole="ProjectControl_table" ToRole="Projects_table" />
           <NavigationProperty Name="Users_Table" Relationship="PCDCRModel.FK_ProjectControl_Users_Table" FromRole="ProjectControl_table" ToRole="Users_Table" />
         </EntityType>
@@ -616,9 +649,10 @@
           <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="ProjectActivities_Table" Relationship="PCDCRModel.FK_ProjectActivities_Table_Users_Table" FromRole="Users_Table" ToRole="ProjectActivities_Table" />
           <NavigationProperty Name="ProjectControl_table" Relationship="PCDCRModel.FK_ProjectControl_Users_Table" FromRole="Users_Table" ToRole="ProjectControl_table" />
+          <NavigationProperty Name="LogHistory" Relationship="PCDCRModel.FK_LogHistory_Users_Table" FromRole="Users_Table" ToRole="LogHistory" />
         </EntityType>
         <Association Name="FK_ProjectActivities_Table_Users_Table">
           <End Type="PCDCRModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
@@ -661,6 +695,30 @@
             </Principal>
             <Dependent Role="ProjectActivities_Table">
               <PropertyRef Name="ActivityPeopleCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LogHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="LogInTime" Type="DateTime" Precision="3" />
+          <Property Name="LogOutTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TotalTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users_Table" Relationship="PCDCRModel.FK_LogHistory_Users_Table" FromRole="LogHistory" ToRole="Users_Table" />
+        </EntityType>
+        <Association Name="FK_LogHistory_Users_Table">
+          <End Type="PCDCRModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="PCDCRModel.LogHistory" Role="LogHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogHistory">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -797,6 +855,18 @@
               <MappingFragment StoreEntitySet="ActivityPeopleCategory_Table">
                 <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogHistory">
+            <EntityTypeMapping TypeName="PCDCRModel.LogHistory">
+              <MappingFragment StoreEntitySet="LogHistory">
+                <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />
+                <ScalarProperty Name="LogInTime" ColumnName="LogInTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -19,6 +19,7 @@ namespace PCDCRSystem.Models
         {
             this.ProjectActivities_Table = new HashSet<ProjectActivities_Table>();
             this.ProjectControl_table = new HashSet<ProjectControl_table>();
+            this.LogHistory = new HashSet<LogHistory>();
         }
     
         public int ID { get; set; }
@@ -28,11 +29,13 @@ namespace PCDCRSystem.Models
         public string UserType { get; set; }
         public string UserPhone { get; set; }
         public string UserAddress { get; set; }
-        public bool Status { get; set; }
+        public Nullable<bool> Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProjectActivities_Table> ProjectActivities_Table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProjectControl_table> ProjectControl_table { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LogHistory> LogHistory { get; set; }
     }
 }

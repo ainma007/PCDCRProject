@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PCDCRSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace PCDCRSystem.Controllers
 {
     public class HomeController : Controller
     {
+
+    
         public ActionResult Index()
         {
             ViewBag.Message = "Welcome to ASP.NET MVC!";
@@ -28,5 +31,7 @@ namespace PCDCRSystem.Controllers
 
             return View();
         }
+
+      
     }
 }

@@ -31,6 +31,17 @@
     <Property Name="CorporationPhone" Type="nvarchar" MaxLength="50" />
     <Property Name="CorporationAddress" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="LogHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="LogInTime" Type="datetime" />
+    <Property Name="LogOutTime" Type="datetime" />
+    <Property Name="Status" Type="nvarchar" MaxLength="10" />
+    <Property Name="TotalTime" Type="nvarchar" MaxLength="30" />
+  </EntityType>
   <EntityType Name="Programs_Table">
     <Key>
       <PropertyRef Name="ID" />
@@ -128,6 +139,18 @@
       </Principal>
       <Dependent Role="City_Table">
         <PropertyRef Name="ProvinceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogHistory_Users_Table">
+    <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+    <End Role="LogHistory" Type="Self.LogHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_Table">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LogHistory">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -256,6 +279,7 @@
     <EntitySet Name="ActivityPeopleCategory_Table" EntityType="Self.ActivityPeopleCategory_Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="City_Table" EntityType="Self.City_Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Corporation_Table" EntityType="Self.Corporation_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogHistory" EntityType="Self.LogHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Programs_Table" EntityType="Self.Programs_Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProjectActivities_Table" EntityType="Self.ProjectActivities_Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProjectControl_table" EntityType="Self.ProjectControl_table" Schema="dbo" store:Type="Tables" />
@@ -266,6 +290,10 @@
     <AssociationSet Name="FK_City_Table_Province_Table" Association="Self.FK_City_Table_Province_Table">
       <End Role="Province_Table" EntitySet="Province_Table" />
       <End Role="City_Table" EntitySet="City_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogHistory_Users_Table" Association="Self.FK_LogHistory_Users_Table">
+      <End Role="Users_Table" EntitySet="Users_Table" />
+      <End Role="LogHistory" EntitySet="LogHistory" />
     </AssociationSet>
     <AssociationSet Name="FK_ProjectActivities_Table_ActivitiesCategory_Table" Association="Self.FK_ProjectActivities_Table_ActivitiesCategory_Table">
       <End Role="ActivitiesCategory_Table" EntitySet="ActivitiesCategory_Table" />

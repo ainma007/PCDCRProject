@@ -36,5 +36,6 @@ namespace PCDCRSystem.Models
         public virtual DbSet<ProjectControl_table> ProjectControl_table { get; set; }
         public virtual DbSet<Users_Table> Users_Table { get; set; }
         public virtual DbSet<ActivityPeopleCategory_Table> ActivityPeopleCategory_Table { get; set; }
+        public virtual DbSet<LogHistory> LogHistory { get; set; }
     }
 }
