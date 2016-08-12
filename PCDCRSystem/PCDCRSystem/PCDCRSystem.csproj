@@ -1499,6 +1499,7 @@
       <DependentUpon>PcdcrModel.edmx</DependentUpon>
       <LastGenOutput>PcdcrModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\PcdcrModel.edmx.sql" />
     <Content Include="Models\PcdcrModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PcdcrModel.edmx</DependentUpon>

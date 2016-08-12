@@ -100,8 +100,8 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProjectName" Type="nvarchar" MaxLength="50" />
-          <Property Name="StartDate" Type="date" />
-          <Property Name="EndDate" Type="date" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
           <Property Name="ProjectStatus" Type="bit" Nullable="false" />
           <Property Name="ProgrameID" Type="int" />
         </EntityType>
@@ -243,6 +243,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProjectControl_Programs_Table">
+          <End Role="Programs_Table" Type="Self.Programs_Table" Multiplicity="0..1" />
+          <End Role="ProjectControl_table" Type="Self.ProjectControl_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programs_Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjectControl_table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProjectControl_Projects_table">
           <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="0..1" />
           <End Role="ProjectControl_table" Type="Self.ProjectControl_table" Multiplicity="*" />
@@ -327,6 +339,10 @@
           <AssociationSet Name="FK_ProjectActivities_Table_Users_Table" Association="Self.FK_ProjectActivities_Table_Users_Table">
             <End Role="Users_Table" EntitySet="Users_Table" />
             <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectControl_Programs_Table" Association="Self.FK_ProjectControl_Programs_Table">
+            <End Role="Programs_Table" EntitySet="Programs_Table" />
+            <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
           </AssociationSet>
           <AssociationSet Name="FK_ProjectControl_Projects_table" Association="Self.FK_ProjectControl_Projects_table">
             <End Role="Projects_table" EntitySet="Projects_table" />
@@ -426,8 +442,8 @@
           </Key>
           <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
           <Property Name="ProjectName" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="StartDate" Precision="0" Type="DateTime" />
-          <Property Name="EndDate" Precision="0" Type="DateTime" />
+          <Property Name="StartDate" Precision="3" Type="DateTime" />
+          <Property Name="EndDate" Precision="3" Type="DateTime" />
           <Property Name="ProjectStatus" Nullable="false" Type="Boolean" />
           <Property Name="ProgrameID" Type="Int32" />
           <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="Programs_Table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Projects_table" ToRole="Programs_Table" />
@@ -826,50 +842,50 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <EntitySetMapping Name="ProjectControl_table">
-            <EntityTypeMapping TypeName="PCDCRModel.ProjectControl_table">
-              <MappingFragment StoreEntitySet="ProjectControl_table">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users_Table">
-            <EntityTypeMapping TypeName="PCDCRModel.Users_Table">
-              <MappingFragment StoreEntitySet="Users_Table">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
-                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ActivityPeopleCategory_Table">
-            <EntityTypeMapping TypeName="PCDCRModel.ActivityPeopleCategory_Table">
-              <MappingFragment StoreEntitySet="ActivityPeopleCategory_Table">
-                <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LogHistory">
-            <EntityTypeMapping TypeName="PCDCRModel.LogHistory">
-              <MappingFragment StoreEntitySet="LogHistory">
-                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />
-                <ScalarProperty Name="LogInTime" ColumnName="LogInTime" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+    <EntitySetMapping Name="ProjectControl_table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ProjectControl_table)">
+        <MappingFragment StoreEntitySet="ProjectControl_table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.Users_Table)">
+        <MappingFragment StoreEntitySet="Users_Table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityPeopleCategory_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ActivityPeopleCategory_Table)">
+        <MappingFragment StoreEntitySet="ActivityPeopleCategory_Table">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogHistory">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.LogHistory)">
+        <MappingFragment StoreEntitySet="LogHistory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LogInTime" ColumnName="LogInTime" />
+          <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

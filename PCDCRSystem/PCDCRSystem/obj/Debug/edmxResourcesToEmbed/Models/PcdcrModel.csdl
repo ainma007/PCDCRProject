@@ -81,8 +81,8 @@
     </Key>
     <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Name="ProjectName" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="StartDate" Precision="0" Type="DateTime" />
-    <Property Name="EndDate" Precision="0" Type="DateTime" />
+    <Property Name="StartDate" Precision="3" Type="DateTime" />
+    <Property Name="EndDate" Precision="3" Type="DateTime" />
     <Property Name="ProjectStatus" Nullable="false" Type="Boolean" />
     <Property Name="ProgrameID" Type="Int32" />
     <NavigationProperty xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" Name="Programs_Table" a:GetterAccess="Public" a:SetterAccess="Public" Relationship="Self.FK_Projects_table_Programs_Table" FromRole="Projects_table" ToRole="Programs_Table" />

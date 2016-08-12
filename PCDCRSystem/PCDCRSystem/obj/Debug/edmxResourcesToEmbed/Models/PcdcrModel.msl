@@ -100,46 +100,46 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProjectControl_table">
-      <EntityTypeMapping TypeName="PCDCRModel.ProjectControl_table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ProjectControl_table)">
         <MappingFragment StoreEntitySet="ProjectControl_table">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users_Table">
-      <EntityTypeMapping TypeName="PCDCRModel.Users_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.Users_Table)">
         <MappingFragment StoreEntitySet="Users_Table">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
-          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
-          <ScalarProperty Name="UserType" ColumnName="UserType" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ActivityPeopleCategory_Table">
-      <EntityTypeMapping TypeName="PCDCRModel.ActivityPeopleCategory_Table">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.ActivityPeopleCategory_Table)">
         <MappingFragment StoreEntitySet="ActivityPeopleCategory_Table">
-          <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PeopleCategoryName" ColumnName="PeopleCategoryName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="LogHistory">
-      <EntityTypeMapping TypeName="PCDCRModel.LogHistory">
+      <EntityTypeMapping TypeName="IsTypeOf(PCDCRModel.LogHistory)">
         <MappingFragment StoreEntitySet="LogHistory">
-          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />
-          <ScalarProperty Name="LogInTime" ColumnName="LogInTime" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LogInTime" ColumnName="LogInTime" />
+          <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -95,8 +95,8 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProjectName" Type="nvarchar" MaxLength="50" />
-    <Property Name="StartDate" Type="date" />
-    <Property Name="EndDate" Type="date" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
     <Property Name="ProjectStatus" Type="bit" Nullable="false" />
     <Property Name="ProgrameID" Type="int" />
   </EntityType>
@@ -238,6 +238,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ProjectControl_Programs_Table">
+    <End Role="Programs_Table" Type="Self.Programs_Table" Multiplicity="0..1" />
+    <End Role="ProjectControl_table" Type="Self.ProjectControl_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programs_Table">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectControl_table">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ProjectControl_Projects_table">
     <End Role="Projects_table" Type="Self.Projects_table" Multiplicity="0..1" />
     <End Role="ProjectControl_table" Type="Self.ProjectControl_table" Multiplicity="*" />
@@ -322,6 +334,10 @@
     <AssociationSet Name="FK_ProjectActivities_Table_Users_Table" Association="Self.FK_ProjectActivities_Table_Users_Table">
       <End Role="Users_Table" EntitySet="Users_Table" />
       <End Role="ProjectActivities_Table" EntitySet="ProjectActivities_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectControl_Programs_Table" Association="Self.FK_ProjectControl_Programs_Table">
+      <End Role="Programs_Table" EntitySet="Programs_Table" />
+      <End Role="ProjectControl_table" EntitySet="ProjectControl_table" />
     </AssociationSet>
     <AssociationSet Name="FK_ProjectControl_Projects_table" Association="Self.FK_ProjectControl_Projects_table">
       <End Role="Projects_table" EntitySet="Projects_table" />
