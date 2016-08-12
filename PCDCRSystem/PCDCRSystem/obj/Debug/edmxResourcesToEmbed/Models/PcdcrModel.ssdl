@@ -40,7 +40,6 @@
     <Property Name="LogInTime" Type="datetime" />
     <Property Name="LogOutTime" Type="datetime" />
     <Property Name="Status" Type="nvarchar" MaxLength="10" />
-    <Property Name="TotalTime" Type="nvarchar" MaxLength="30" />
     <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Programs_Table">

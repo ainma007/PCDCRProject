@@ -362,7 +362,6 @@
     <Property Name="LogInTime" Type="DateTime" Precision="3" />
     <Property Name="LogOutTime" Type="DateTime" Precision="3" />
     <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="TotalTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Users_Table" Relationship="PCDCRModel.FK_LogHistory_Users_Table" FromRole="LogHistory" ToRole="Users_Table" />
     <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
