@@ -46,6 +46,7 @@
           <Property Name="LogOutTime" Type="datetime" />
           <Property Name="Status" Type="nvarchar" MaxLength="10" />
           <Property Name="TotalTime" Type="nvarchar" MaxLength="30" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Programs_Table">
           <Key>
@@ -709,6 +710,7 @@
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="TotalTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users_Table" Relationship="PCDCRModel.FK_LogHistory_Users_Table" FromRole="LogHistory" ToRole="Users_Table" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_LogHistory_Users_Table">
           <End Type="PCDCRModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
@@ -861,6 +863,7 @@
           <EntitySetMapping Name="LogHistory">
             <EntityTypeMapping TypeName="PCDCRModel.LogHistory">
               <MappingFragment StoreEntitySet="LogHistory">
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
                 <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />

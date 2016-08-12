@@ -364,6 +364,7 @@
     <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="TotalTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Users_Table" Relationship="PCDCRModel.FK_LogHistory_Users_Table" FromRole="LogHistory" ToRole="Users_Table" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_LogHistory_Users_Table">
     <End Type="PCDCRModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />

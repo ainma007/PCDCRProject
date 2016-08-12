@@ -1,9 +1,13 @@
 ﻿using PCDCRSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using System.Web.UI;
 
 namespace PCDCRSystem.Controllers
 {
@@ -38,18 +42,17 @@ namespace PCDCRSystem.Controllers
                                 // OfLine 
                                 //  يدخل على النظام
                                 // ونسجل بياناته  في جدول 
+                       
                                 LogHistory h = new LogHistory()
                                 {
                                     UserId = u.ID,
                                     LogInTime = DateTime.Now,
-                                    Status = "OnLine"
+                                    Status = "OnLine",
+                                    IPAddress = GetLocalIPAddress()
 
                                 };
                                 dc.LogHistory.Add(h);
                                 dc.SaveChanges();
-
-                              //  InformationClass.ListUsersOnLine.Add(h);
-
                                 return RedirectToAction("LoggedIn");
                             }
                             else
@@ -58,9 +61,7 @@ namespace PCDCRSystem.Controllers
                                 //
 
                                 return RedirectToAction("LoggedIn");
-                                // return View();
-
-
+                                // return View()ك
                             }
 
 
@@ -107,6 +108,45 @@ namespace PCDCRSystem.Controllers
               return   status ;
             }
         
+        }
+
+
+
+
+        // GET: /Account/LogOff 
+        public ActionResult LogOff()
+        {
+                // Set User OfLine  :
+                SetUserOffLine();
+
+                // to destroy the FormsAuthentication cookie 
+                // حذف الكويكزز
+                FormsAuthentication.SignOut();
+                return RedirectToAction("Login", "Account");           
+        }
+
+
+        public string GetLocalIPAddress()
+        {
+            string x;
+            x = Dns.GetHostEntry(Dns.GetHostName()).AddressList.First(f =>
+                f.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString();
+            return x.ToString();
+        }
+
+
+        public void SetUserOffLine()
+        {
+            string ipaddressvalue = GetLocalIPAddress();
+            PCDCREntities entities = new PCDCREntities();
+            var entity = entities.LogHistory.Single(i => i.IPAddress == ipaddressvalue 
+                                 && i.Status == "OnLine");
+
+            entity.LogOutTime = DateTime.Now;
+            entity.Status = "OffLine";
+            entities.LogHistory .Attach(entity);
+            entities.Entry(entity).State = EntityState.Modified;
+            entities.SaveChanges();
         }
         #endregion
     }

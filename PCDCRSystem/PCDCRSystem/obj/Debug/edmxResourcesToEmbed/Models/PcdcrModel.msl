@@ -134,6 +134,7 @@
     <EntitySetMapping Name="LogHistory">
       <EntityTypeMapping TypeName="PCDCRModel.LogHistory">
         <MappingFragment StoreEntitySet="LogHistory">
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
           <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />

@@ -20,6 +20,7 @@ namespace PCDCRSystem.Models
         public Nullable<System.DateTime> LogOutTime { get; set; }
         public string Status { get; set; }
         public string TotalTime { get; set; }
+        public string IPAddress { get; set; }
     
         public virtual Users_Table Users_Table { get; set; }
     }

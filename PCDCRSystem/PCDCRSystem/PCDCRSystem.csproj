@@ -2054,8 +2054,8 @@
     <Content Include="Views\Corporation\Corporation.cshtml" />
     <Content Include="Views\ActivitiesCategory\ActivitiesCategory.cshtml" />
     <Content Include="Views\ActivityPeopleCategory\PeopleCategory.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\LoggedIn.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
