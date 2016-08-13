@@ -37,7 +37,7 @@ namespace PCDCRSystem.Models
                     FullName = control.Users_Table.FullName
                 },
 
-               // Status = control.Status,
+                Status = control.Status,
             });
         }
 

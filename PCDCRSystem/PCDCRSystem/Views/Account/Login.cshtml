@@ -3,44 +3,122 @@
     Layout = null;
 }
 
-@model PCDCRSystem.Models.Users_Table
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>تسجيل الدخول </h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+<!DOCTYPE html>
+<html>
+<head>
+    <title>نظام الأرشيف الالكتروني</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <link href="@Url.Content("~/Content/assets/plugins/pace/pace-theme-flash.css")" rel="stylesheet" type="text/css" media="screen" />
+    <link href="@Url.Content("~/Content/assets/plugins/jquery-scrollbar/jquery.scrollbar.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/plugins/boostrapv3/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/plugins/boostrapv3/css/bootstrap-theme.min.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/assets/plugins/font-awesome/css/font-awesome.css")
+    <link href="@Url.Content("~/Content/assets/css/animate.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/css/rtl/style.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/css/rtl/responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/css/custom-icon-set.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.rtl.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.aspnetmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.aspnetmvc.min.js")"></script>
+    <script>
+    kendo.culture("en-GB");
+    </script>
+</head>
+<body class="error-body no-top">
+    <div class="container">
+        <div class="row login-container column-seperation">
+            <div class="col-md-5 col-md-offset-1">
+                <h2>Sign in to webarch</h2>
+                <p>
+                    Use Facebook, Twitter or your email to sign in.<br>
+                    <a href="#">Sign up Now!</a> for a webarch account,It's free and always will be..
+                </p>
+                <br>
+
+                <button class="btn btn-block btn-info col-md-8" type="button">
+                    <span class="pull-left"><i class="icon-facebook"></i></span>
+                    <span class="bold">Login with Facebook</span>
+                </button>
+                <button class="btn btn-block btn-success col-md-8" type="button">
+                    <span class="pull-left"><i class="icon-twitter"></i></span>
+                    <span class="bold">Login with Twitter</span>
+                </button>
             </div>
-        </div>
+            <div class="col-md-5 ">
+                <br>
+            @model PCDCRSystem.Models.Users_Table
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>تسجيل الدخول </h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="form-group">
+                      
+                        <div class="col-md-10">
+                            <label for="fullname" class="required">Your Name</label>
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="موافق" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
             </div>
-        </div>
 
 
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="موافق" class="btn btn-default" />
-            </div>
         </div>
     </div>
-}
+    <!-- END CONTAINER -->
+    <!-- BEGIN CORE JS FRAMEWORK-->
+    <script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="assets/js/login.js" type="text/javascript"></script>
+    <!-- BEGIN CORE TEMPLATE JS -->
+    <!-- END CORE TEMPLATE JS -->
+</body>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+</html>

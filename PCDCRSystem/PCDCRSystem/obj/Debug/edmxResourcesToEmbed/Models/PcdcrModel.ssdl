@@ -39,7 +39,7 @@
     <Property Name="UserId" Type="int" />
     <Property Name="LogInTime" Type="datetime" />
     <Property Name="LogOutTime" Type="datetime" />
-    <Property Name="Status" Type="nvarchar" MaxLength="10" />
+    <Property Name="Status" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Programs_Table">
@@ -87,7 +87,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="int" />
     <Property Name="ProjectID" Type="int" />
-    <Property Name="Status" Type="bit" />
+    <Property Name="Status" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Projects_table">
     <Key>
@@ -128,7 +128,7 @@
     <Property Name="UserType" Type="nvarchar" MaxLength="50" />
     <Property Name="UserPhone" Type="nvarchar" MaxLength="50" />
     <Property Name="UserAddress" Type="nvarchar(max)" />
-    <Property Name="Status" Type="bit" />
+    <Property Name="Status" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="FK_City_Table_Province_Table">
     <End Role="Province_Table" Type="Self.Province_Table" Multiplicity="0..1" />

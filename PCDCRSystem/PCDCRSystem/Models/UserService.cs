@@ -26,7 +26,7 @@ namespace PCDCRSystem.Models
                 UserType = user.UserType,
                 UserPhone = user.UserPhone,
                 UserAddress = user.UserAddress,
-              //  userstatus = user.Status,
+               userstatus = user.Status,
                 
               
             });

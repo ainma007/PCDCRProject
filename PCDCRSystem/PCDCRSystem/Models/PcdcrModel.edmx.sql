@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/12/2016 19:01:10
+-- Date Created: 08/13/2016 15:22:00
 -- Generated from EDMX file: C:\Users\BlackSword\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\Models\PcdcrModel.edmx
 -- --------------------------------------------------
 
@@ -17,17 +17,11 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_City_Table_Province_Table]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[City_Table] DROP CONSTRAINT [FK_City_Table_Province_Table];
-GO
-IF OBJECT_ID(N'[dbo].[FK_LogHistory_Users_Table]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[LogHistory] DROP CONSTRAINT [FK_LogHistory_Users_Table];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ProjectActivities_Table_ActivitiesCategory_Table]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProjectActivities_Table] DROP CONSTRAINT [FK_ProjectActivities_Table_ActivitiesCategory_Table];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ProjectActivities_Table_ActivityPeopleCategory_Table]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ProjectActivities_Table] DROP CONSTRAINT [FK_ProjectActivities_Table_ActivityPeopleCategory_Table];
+IF OBJECT_ID(N'[dbo].[FK_City_Table_Province_Table]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[City_Table] DROP CONSTRAINT [FK_City_Table_Province_Table];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProjectActivities_Table_City_Table]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProjectActivities_Table] DROP CONSTRAINT [FK_ProjectActivities_Table_City_Table];
@@ -35,23 +29,32 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ProjectActivities_Table_Corporation_Table]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProjectActivities_Table] DROP CONSTRAINT [FK_ProjectActivities_Table_Corporation_Table];
 GO
+IF OBJECT_ID(N'[dbo].[FK_Projects_table_Programs_Table]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Projects_table] DROP CONSTRAINT [FK_Projects_table_Programs_Table];
+GO
 IF OBJECT_ID(N'[dbo].[FK_ProjectActivities_Table_Projects_table]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProjectActivities_Table] DROP CONSTRAINT [FK_ProjectActivities_Table_Projects_table];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProjectActivities_Table_Province_Table]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProjectActivities_Table] DROP CONSTRAINT [FK_ProjectActivities_Table_Province_Table];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ProjectActivities_Table_Users_Table]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ProjectActivities_Table] DROP CONSTRAINT [FK_ProjectActivities_Table_Users_Table];
+IF OBJECT_ID(N'[dbo].[FK_ProjectControl_Programs_Table]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjectControl_table] DROP CONSTRAINT [FK_ProjectControl_Programs_Table];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProjectControl_Projects_table]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProjectControl_table] DROP CONSTRAINT [FK_ProjectControl_Projects_table];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ProjectActivities_Table_Users_Table]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjectActivities_Table] DROP CONSTRAINT [FK_ProjectActivities_Table_Users_Table];
+GO
 IF OBJECT_ID(N'[dbo].[FK_ProjectControl_Users_Table]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProjectControl_table] DROP CONSTRAINT [FK_ProjectControl_Users_Table];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Projects_table_Programs_Table]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Projects_table] DROP CONSTRAINT [FK_Projects_table_Programs_Table];
+IF OBJECT_ID(N'[dbo].[FK_ProjectActivities_Table_ActivityPeopleCategory_Table]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjectActivities_Table] DROP CONSTRAINT [FK_ProjectActivities_Table_ActivityPeopleCategory_Table];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LogHistory_Users_Table]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[LogHistory] DROP CONSTRAINT [FK_LogHistory_Users_Table];
 GO
 
 -- --------------------------------------------------
@@ -61,26 +64,17 @@ GO
 IF OBJECT_ID(N'[dbo].[ActivitiesCategory_Table]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ActivitiesCategory_Table];
 GO
-IF OBJECT_ID(N'[dbo].[ActivityPeopleCategory_Table]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ActivityPeopleCategory_Table];
-GO
 IF OBJECT_ID(N'[dbo].[City_Table]', 'U') IS NOT NULL
     DROP TABLE [dbo].[City_Table];
 GO
 IF OBJECT_ID(N'[dbo].[Corporation_Table]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Corporation_Table];
 GO
-IF OBJECT_ID(N'[dbo].[LogHistory]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[LogHistory];
-GO
 IF OBJECT_ID(N'[dbo].[Programs_Table]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Programs_Table];
 GO
 IF OBJECT_ID(N'[dbo].[ProjectActivities_Table]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProjectActivities_Table];
-GO
-IF OBJECT_ID(N'[dbo].[ProjectControl_table]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ProjectControl_table];
 GO
 IF OBJECT_ID(N'[dbo].[Projects_table]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Projects_table];
@@ -91,8 +85,17 @@ GO
 IF OBJECT_ID(N'[dbo].[sysdiagrams]', 'U') IS NOT NULL
     DROP TABLE [dbo].[sysdiagrams];
 GO
+IF OBJECT_ID(N'[dbo].[ProjectControl_table]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProjectControl_table];
+GO
 IF OBJECT_ID(N'[dbo].[Users_Table]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users_Table];
+GO
+IF OBJECT_ID(N'[dbo].[ActivityPeopleCategory_Table]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ActivityPeopleCategory_Table];
+GO
+IF OBJECT_ID(N'[dbo].[LogHistory]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[LogHistory];
 GO
 
 -- --------------------------------------------------
@@ -194,7 +197,7 @@ CREATE TABLE [dbo].[ProjectControl_table] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [UserID] int  NULL,
     [ProjectID] int  NULL,
-    [Status] bit  NULL
+    [Status] bit  NOT NULL
 );
 GO
 
@@ -207,7 +210,7 @@ CREATE TABLE [dbo].[Users_Table] (
     [UserType] nvarchar(50)  NULL,
     [UserPhone] nvarchar(50)  NULL,
     [UserAddress] nvarchar(max)  NULL,
-    [Status] bit  NULL
+    [Status] bit  NOT NULL
 );
 GO
 
@@ -224,7 +227,7 @@ CREATE TABLE [dbo].[LogHistory] (
     [UserId] int  NULL,
     [LogInTime] datetime  NULL,
     [LogOutTime] datetime  NULL,
-    [Status] nvarchar(10)  NULL,
+    [Status] nvarchar(10)  NOT NULL,
     [IPAddress] nvarchar(50)  NULL
 );
 GO

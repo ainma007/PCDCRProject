@@ -3,6 +3,7 @@
     ViewBag.Title = "UserManegment";
 }
 
+@if (Session["ID"] != null) { 
 <div class="page-title">
     <i class="icon-custom-left"></i>
     <h3>إدارة - <span class="semi-bold">المستخدمين</span></h3>
@@ -82,3 +83,9 @@
     //}
 
 </script>
+}
+else {
+
+    @Html.ActionLink("Account", "Login")
+
+}

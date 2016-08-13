@@ -125,7 +125,6 @@ C:\Users\BlackSword\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\bin\uk
 C:\Users\BlackSword\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\bin\zh-CN\Kendo.Mvc.resources.dll
 C:\Users\BlackSword\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\obj\Debug\PCDCRSystem.dll
 C:\Users\BlackSword\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\obj\Debug\PCDCRSystem.pdb
-C:\Users\BlackSword\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\obj\Debug\PCDCRSystem.csprojResolveAssemblyReference.cache
 C:\Users\MyGla\OneDrive\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\bin\ApplicationInsights.config
 C:\Users\MyGla\OneDrive\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\bin\PCDCRSystem.dll.config
 C:\Users\MyGla\OneDrive\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\bin\PCDCRSystem.dll
@@ -212,3 +211,4 @@ C:\Users\MyGla\Desktop\PCDCRSystem\PCDCRSystem\obj\Debug\PCDCRSystem.csprojResol
 C:\Users\MyGla\Desktop\PCDCRSystem\PCDCRSystem\obj\Debug\PCDCRSystem.dll
 C:\Users\MyGla\Desktop\PCDCRSystem\PCDCRSystem\obj\Debug\PCDCRSystem.pdb
 C:\Users\MyGla\OneDrive\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\obj\Debug\PCDCRSystem.csprojResolveAssemblyReference.cache
+C:\Users\BlackSword\Documents\GitHub\PCDCRProject\PCDCRSystem\PCDCRSystem\obj\Debug\PCDCRSystem.csprojResolveAssemblyReference.cache

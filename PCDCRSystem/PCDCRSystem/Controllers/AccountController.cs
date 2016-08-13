@@ -123,14 +123,16 @@ namespace PCDCRSystem.Controllers
         // GET: /Account/LogOff 
         public ActionResult LogOff()
         {
-          
-                // Set User OfLine  :
-              //  SetUserOffLine();
 
-                // to destroy the FormsAuthentication cookie 
-                // حذف الكويكزز
-                FormsAuthentication.SignOut();
+            // Set User OfLine  :
+            //  SetUserOffLine();
+
+            // to destroy the FormsAuthentication cookie 
+            // حذف الكويكزز
+            Session["ID"] = null;
             Session.Clear();
+            FormsAuthentication.SignOut();
+          
             //----------------------------
             return RedirectToAction("Login", "Account");           
         }

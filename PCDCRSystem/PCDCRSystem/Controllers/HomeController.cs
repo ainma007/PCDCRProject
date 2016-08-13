@@ -13,7 +13,7 @@ namespace PCDCRSystem.Controllers
     
         public ActionResult Index()
         {
-           if(Session ["Users_Table"]== null)
+           if (Session["ID"] == null)
                 {
                 return RedirectToAction("Login", "Account");
                 }
