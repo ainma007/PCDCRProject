@@ -41,36 +41,9 @@ namespace PCDCRSystem.Controllers
                             Session["Password"] = u.Password;
 
 
-                            // Check If Already LogIned Or Not : 
-                            //bool CheckCurrentUser = IsOnLine(u.ID);
-                            //if (CheckCurrentUser == false)
-                            //{
-                            //    // اذا كان المستخدم 
-                            //    // OfLine 
-                            //    //  يدخل على النظام
-                            //    // ونسجل بياناته  في جدول 
-                       
-                            //    //LogHistory h = new LogHistory()
-                            //    //{
-                            //    //    UserId = u.ID,
-                            //    //    LogInTime = DateTime.Now,
-                            //    //    Status = "OnLine",
-                            //    //    IPAddress = GetLocalIPAddress()
-
-                            //    //};
-                            //    //dc.LogHistory.Add(h);
-                            //    //dc.SaveChanges();
+                         
                               return RedirectToAction("LoggedIn");
-                            //}
-                            //else
-                            //{
-                            //    //  اذا كان مسجل دخول  يعني OnLine
-                            //    //
-
-                            //    return RedirectToAction("LoggedIn");
-                            //    // return View()ك
-                            //}
-
+                           
 
                         }
                     }
