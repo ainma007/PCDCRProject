@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PCDCRSystem.Models;
 namespace PCDCRSystem.Controllers
 {
     public class HomeController : Controller
@@ -13,7 +13,10 @@ namespace PCDCRSystem.Controllers
     
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+           if(Session ["Users_Table"]== null)
+                {
+                return RedirectToAction("Login", "Account");
+                }
 
             return View();
         }

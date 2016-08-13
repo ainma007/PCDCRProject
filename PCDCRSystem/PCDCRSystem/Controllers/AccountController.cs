@@ -34,6 +34,13 @@ namespace PCDCRSystem.Controllers
                                                                     && i.Password == user.Password);
                         if (u != null)
                         {
+
+                            //  User Informations : 
+                            Session["ID"] = u.ID;
+                            Session["UserName"] = u.UserName;
+                            Session["Password"] = u.Password;
+
+
                             // Check If Already LogIned Or Not : 
                             bool CheckCurrentUser = IsOnLine(u.ID);
                             if (CheckCurrentUser == false)
@@ -116,13 +123,16 @@ namespace PCDCRSystem.Controllers
         // GET: /Account/LogOff 
         public ActionResult LogOff()
         {
+          
                 // Set User OfLine  :
                 SetUserOffLine();
 
                 // to destroy the FormsAuthentication cookie 
                 // حذف الكويكزز
                 FormsAuthentication.SignOut();
-                return RedirectToAction("Login", "Account");           
+            Session.Clear();
+            //----------------------------
+            return RedirectToAction("Login", "Account");           
         }
 
 
