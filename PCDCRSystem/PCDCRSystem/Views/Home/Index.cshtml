@@ -6,45 +6,52 @@
 <script>
     kendo.culture("en-GB");
 </script>
-@if (Session["UserType"].Equals("مدير"))
+<div class="page-title">
+    <i class="icon-custom-left"></i>
+    <h3>سجل  - <span class="semi-bold">المشاريع</span></h3>
+</div>
+@if (Session["UserId"] != null)
+{
+
+if (Session["UserType"].Equals("مدير"))
 {
 
     @(Html.Kendo().Grid<ProjectViewModel>()
-    .Name("grid")
-    .Columns(columns =>
-    {
-        columns.Bound(p => p.ProjectID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
-        columns.Bound(p => p.ProjectName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المشروع" }).Width(100).Title("اسم المشروع");
-        columns.Bound(p => p.StartDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ البداية" }).Width(100).Format("{0:dd/MM/yyyy}").Title("تاريخ البدء");
-        columns.Bound(p => p.EndDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ النهاية" }).Width(100).Format("{0:dd/MM/yyyy}").Title("تاريخ الانتهاء");
+            .Name("grid")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.ProjectID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
+                columns.Bound(p => p.ProjectName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المشروع" }).Width(100).Title("اسم المشروع");
+                columns.Bound(p => p.StartDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ البداية" }).Width(100).Format("{0:dd/MM/yyyy}").Title("تاريخ البدء");
+                columns.Bound(p => p.EndDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ النهاية" }).Width(100).Format("{0:dd/MM/yyyy}").Title("تاريخ الانتهاء");
 
-        columns.ForeignKey(p => p.ProgrameID, (System.Collections.IEnumerable)ViewData["programs"], "ProgramID", "ProgramName")
-                   .Title("البرنامج").Width(100);
-        columns.Bound(p => p.Status).Width(30).HeaderHtmlAttributes(new { @title = "الحالة" }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Status ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
+                columns.ForeignKey(p => p.ProgrameID, (System.Collections.IEnumerable)ViewData["programs"], "ProgramID", "ProgramName")
+                           .Title("البرنامج").Width(100);
+                columns.Bound(p => p.Status).Width(30).HeaderHtmlAttributes(new { @title = "الحالة" }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Status ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
 
-    })
+            })
 
-     .Selectable(selectable => selectable
-            .Mode(GridSelectionMode.Multiple))
-           .Pageable()
-    .Sortable()
-    .Scrollable()
-    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
-    .HtmlAttributes(new { style = "height:550px;" })
-    .DataSource(dataSource => dataSource
-        .Ajax()
-        .PageSize(20)
-        .ServerOperation(false)
-        .Events(events => events.Error("errorHandler"))
-        .Model(model =>
-        {
-            model.Id(p => p.ProjectID);
-            model.Field(p => p.ProjectID).Editable(false);
-            model.Field(p => p.ProgrameID).DefaultValue(1);
-        })
-        .Read(read => read.Action("Project_Read", "Home"))
+             .Selectable(selectable => selectable
+                    .Mode(GridSelectionMode.Multiple))
+                   .Pageable()
+            .Sortable()
+            .Scrollable()
+            .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+            .HtmlAttributes(new { style = "height:550px;" })
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .PageSize(20)
+                .ServerOperation(false)
+                .Events(events => events.Error("errorHandler"))
+                .Model(model =>
+                {
+                    model.Id(p => p.ProjectID);
+                    model.Field(p => p.ProjectID).Editable(false);
+                    model.Field(p => p.ProgrameID).DefaultValue(1);
+                })
+                .Read(read => read.Action("Project_Read", "Home"))
 
-    )
+            )
     )
 
     <script type="text/javascript">
@@ -70,43 +77,43 @@ else
 
 
     @(Html.Kendo().Grid<ViewUserProjectControlViewModel>()
-    .Name("grid")
-    .Columns(columns =>
-    {
-        columns.Bound(p => p.ID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
-        columns.Bound(p => p.UserProjectID).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
-        columns.Bound(p => p.MYUserID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
+            .Name("grid")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.ID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
+                columns.Bound(p => p.UserProjectID).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
+                columns.Bound(p => p.MYUserID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ProductID" }).Width(100);
 
-        columns.Bound(p => p.UserProjectName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المشروع" }).Width(100).Title("اسم المشروع");
-        columns.Bound(p => p.ProjecStartDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ البداية" }).Width(100).Format("{0:dd/MM/yyyy}").Title("تاريخ البدء");
-        columns.Bound(p => p.ProjecEndDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ النهاية" }).Width(100).Format("{0:dd/MM/yyyy}").Title("تاريخ الانتهاء");
+                columns.Bound(p => p.UserProjectName).Width(100).HeaderHtmlAttributes(new { @title = "اسم المشروع" }).Width(100).Title("اسم المشروع");
+                columns.Bound(p => p.ProjecStartDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ البداية" }).Width(100).Format("{0:dd/MM/yyyy}").Title("تاريخ البدء");
+                columns.Bound(p => p.ProjecEndDate).Width(100).HeaderHtmlAttributes(new { @title = "تاريخ النهاية" }).Width(100).Format("{0:dd/MM/yyyy}").Title("تاريخ الانتهاء");
 
-        columns.Bound(p => p.ProjecStatus).Width(30).HeaderHtmlAttributes(new { @title = "الحالة" }).ClientTemplate("<input type='checkbox' disabled='disabled' #= ProjecStatus ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
-        columns.Bound(p => p.ProjectProgram).Width(100).HeaderHtmlAttributes(new { @title = " البرنامج" }).Width(100).Title("اسم المشروع");
+                columns.Bound(p => p.ProjecStatus).Width(30).HeaderHtmlAttributes(new { @title = "الحالة" }).ClientTemplate("<input type='checkbox' disabled='disabled' #= ProjecStatus ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
+                columns.Bound(p => p.ProjectProgram).Width(100).HeaderHtmlAttributes(new { @title = " البرنامج" }).Width(100).Title("اسم المشروع");
 
 
-    })
+            })
 
-     .Selectable(selectable => selectable
-            .Mode(GridSelectionMode.Multiple))
-           .Pageable()
-    .Sortable()
-    .Scrollable()
-    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
-    .HtmlAttributes(new { style = "height:550px;" })
-    .DataSource(dataSource => dataSource
-        .Ajax()
-        .PageSize(20)
-        .ServerOperation(false)
-        .Events(events => events.Error("errorHandler"))
-        .Model(model =>
-        {
-            model.Id(p => p.ID);
-            model.Field(p => p.ID).Editable(false);
-        })
-        .Read(read => read.Action("ProjectControl_Read", "Home"))
+             .Selectable(selectable => selectable
+                    .Mode(GridSelectionMode.Multiple))
+                   .Pageable()
+            .Sortable()
+            .Scrollable()
+            .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+            .HtmlAttributes(new { style = "height:550px;" })
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .PageSize(20)
+                .ServerOperation(false)
+                .Events(events => events.Error("errorHandler"))
+                .Model(model =>
+                {
+                    model.Id(p => p.ID);
+                    model.Field(p => p.ID).Editable(false);
+                })
+                .Read(read => read.Action("ProjectControl_Read", "Home"))
 
-    )
+            )
     )
 
     <script type="text/javascript">
@@ -124,5 +131,14 @@ else
         }
     }
     </script>
+
+    }
+}
+
+else{
+
+    Response.Redirect("~/Account/Login");
+
+
 
 }
