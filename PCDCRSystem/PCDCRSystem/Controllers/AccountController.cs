@@ -36,13 +36,14 @@ namespace PCDCRSystem.Controllers
                         {
 
                             //  User Informations : 
-                            Session["ID"] = u.ID;
+                            Session["UserID"] = u.ID;
                             Session["UserName"] = u.UserName;
                             Session["Password"] = u.Password;
+                            Session["UserType"] = u.UserType;
 
 
                          
-                              return RedirectToAction("LoggedIn");
+                              return RedirectToAction("Index", "Home");
                            
 
                         }

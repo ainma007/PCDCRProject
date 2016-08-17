@@ -7,18 +7,32 @@ using System.Web;
 
 namespace PCDCRSystem.Models
 {
-    public class ProjectViewModel
+    public class ViewUserProjectControlViewModel
     {
+
+
         [ScaffoldColumn(false)]
-        public int ProjectID
+        public int ID
+        {
+            get;
+            set;
+        }
+     
+        public int? MYUserID
+        {
+            get;
+            set;
+        }
+    
+        public int? UserProjectID 
         {
             get;
             set;
         }
 
-        [Required]
+        
         [DisplayName("اسم المشروع:")]
-        public string ProjectName
+        public string UserProjectName
         {
             get;
             set;
@@ -26,7 +40,7 @@ namespace PCDCRSystem.Models
 
         [DisplayName("تاريخ البدء:")]
         [DataType(DataType.Date)]
-        public DateTime StartDate
+        public DateTime ProjecStartDate
         {
             get;
             set;
@@ -35,27 +49,25 @@ namespace PCDCRSystem.Models
 
         [DisplayName("تاريخ الانتهاء:")]
         [DataType(DataType.Date)]
-        public DateTime EndDate
+        public DateTime ProjecEndDate
         {
             get;
             set;
         }
         [DisplayName("الحالة:")]
-        public bool Status
+        public bool ProjecStatus
         {
             get;
             set;
         }
 
-        [UIHint("ClientPrograme")]
-        public ProgramsViewModel Programe
+        [Required]
+        [DisplayName("اسم البرنامج:")]
+        public string ProjectProgram
         {
             get;
             set;
         }
-        [UIHint("ProgrameID")]
-        [DisplayName("البرنامج:")]
-        public int? ProgrameID { get; set; }
-     
+
     }
 }

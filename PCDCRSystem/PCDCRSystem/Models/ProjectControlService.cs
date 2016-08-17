@@ -40,7 +40,23 @@ namespace PCDCRSystem.Models
                 Status = control.Status,
             });
         }
+        public IEnumerable<ViewUserProjectControlViewModel> ReadprojectForUser()
+        {
+            return entities.ProjectControl_table.Select(control => new ViewUserProjectControlViewModel
+            {
+                ID = control.ID,
+                UserProjectID = control.ProjectID,
+                MYUserID = control.UserID,
+                UserProjectName = control.Projects_table.ProjectName,
+                ProjecStartDate = control.Projects_table.StartDate.HasValue ? control.Projects_table.StartDate.Value : default(DateTime),
+                ProjecEndDate = control.Projects_table.EndDate.HasValue ? control.Projects_table.EndDate.Value : default(DateTime),
+                ProjecStatus = control.Status,
+                ProjectProgram = control.Projects_table.Programs_Table.ProgramName,
 
+
+            });
+
+        }
 
         public void Createproject(ProjectControlViewModel control)
         {
@@ -94,6 +110,8 @@ namespace PCDCRSystem.Models
             });
         }
 
+
+
         public IEnumerable<UserViewModel> GetUseres()
         {
             return entities.Users_Table.Select(user => new UserViewModel
@@ -103,6 +121,26 @@ namespace PCDCRSystem.Models
               
 
 
+            });
+        }
+
+        public IEnumerable<ViewUserProjectControlViewModel> ReadUserProject()
+        {
+            return entities.ProjectControl_table.Select(control => new ViewUserProjectControlViewModel
+            {
+                ID = control.ID,
+            UserProjectID= control.ProjectID,
+                MYUserID = control.UserID,
+
+
+
+
+
+
+
+
+
+                ProjecStatus = control.Status,
             });
         }
         public void Dispose()

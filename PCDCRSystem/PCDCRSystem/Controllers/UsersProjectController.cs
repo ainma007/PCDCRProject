@@ -20,16 +20,11 @@ namespace PCDCRSystem.Controllers
         }
         public ActionResult UsersProject()
         {
-            if (Session["ID"] == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            else
-            {
+        
                 PopulateProject();
                 PopulateUsers();
                 return View();
-            }
+           
             
         }
 

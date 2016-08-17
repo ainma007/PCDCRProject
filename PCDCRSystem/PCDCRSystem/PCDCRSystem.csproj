@@ -232,6 +232,7 @@
       <DependentUpon>PcdcrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="Models\ViewUserProjectControlViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
