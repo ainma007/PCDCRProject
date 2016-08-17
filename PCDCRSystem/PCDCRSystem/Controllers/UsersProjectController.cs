@@ -46,14 +46,16 @@ namespace PCDCRSystem.Controllers
 
         public void PopulateUsers()
         {
+            //  وهنا كمان لازم يكون نشيط حتى يتم ادراجه في المشاريع
             var dataContext = new PCDCREntities();
-            var users = dataContext.Users_Table
-                        .Select(c => new userforeignKeyViewModel
-                        {
-                            UserID = c.ID,
-                            FullName = c.FullName
-                        })
-                        .OrderBy(e => e.UserID);
+                  var users = dataContext.Users_Table
+                            .Where (i=> i.Status != false)
+                                    .Select(c => new userforeignKeyViewModel
+                                    {
+                                        UserID = c.ID,
+                                        FullName = c.FullName
+                                    })
+                                    .OrderBy(e => e.UserID);
 
             ViewData["users"] = users;
             ViewData["defaultUser"] = users.First();

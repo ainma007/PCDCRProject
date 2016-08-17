@@ -17,7 +17,9 @@ namespace PCDCRSystem.Models
 
         public IEnumerable<UserViewModel> Read()
         {
-            return entities.Users_Table.Select(user => new UserViewModel
+            // هنا كمان تعديل على حالة المستخدم
+            return entities.Users_Table
+                .Where  (i=> i.Status != false ).Select(user => new UserViewModel
             {
                 UserID = user.ID,
                 FullName = user.FullName,

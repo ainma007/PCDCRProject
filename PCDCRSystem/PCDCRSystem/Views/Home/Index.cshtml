@@ -1,4 +1,7 @@
-﻿@using PCDCRSystem.Models
+﻿
+
+
+@using PCDCRSystem.Models
 
 @{
     ViewBag.Title = "Home Page";
@@ -10,13 +13,15 @@
     <i class="icon-custom-left"></i>
     <h3>سجل  - <span class="semi-bold">المشاريع</span></h3>
 </div>
+
 @if (Session["UserId"] != null)
 {
+    
 
-if (Session["UserType"].Equals("مدير"))
-{
+    if (Session["UserType"].Equals("مدير"))
+    {
 
-    @(Html.Kendo().Grid<ProjectViewModel>()
+        @(Html.Kendo().Grid<ProjectViewModel>()
             .Name("grid")
             .Columns(columns =>
             {
@@ -42,7 +47,7 @@ if (Session["UserType"].Equals("مدير"))
                 .Ajax()
                 .PageSize(20)
                 .ServerOperation(false)
-                .Events(events => events.Error("errorHandler"))
+                //.Events(events => events.Error("errorHandler"))
                 .Model(model =>
                 {
                     model.Id(p => p.ProjectID);
@@ -52,31 +57,32 @@ if (Session["UserType"].Equals("مدير"))
                 .Read(read => read.Action("Project_Read", "Home"))
 
             )
-    )
+            .Events(events => events.Change("selectrow"))
+        )
+        var ss = 0;
+        <script>
 
-    <script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
-                }
-            });
-            alert(message);
+                function selectrow(arg) {
+            var Thegrid = $("#grid").data("kendoGrid");
+            var item = Thegrid.dataItem(Thegrid.select());
+            ss =  item.ProjectID;
+
+            alert("Project ID = " + ss);
         }
+
+
+        </script>
+
+        Session["SelectedProjectId"] = null;
+        Session["SelectedProjectId"] = ss;
+       // return RedirectToAction("View", "Name of Controller");
     }
-    </script>
 
-}
-
-else
-{
+    else
+    {
 
 
-    @(Html.Kendo().Grid<ViewUserProjectControlViewModel>()
+        @(Html.Kendo().Grid<ViewUserProjectControlViewModel>()
             .Name("grid")
             .Columns(columns =>
             {
@@ -105,7 +111,7 @@ else
                 .Ajax()
                 .PageSize(20)
                 .ServerOperation(false)
-                .Events(events => events.Error("errorHandler"))
+
                 .Model(model =>
                 {
                     model.Id(p => p.ID);
@@ -114,28 +120,29 @@ else
                 .Read(read => read.Action("ProjectControl_Read", "Home"))
 
             )
-    )
+             .Events(events => events.Change("selectrow"))
+        )
 
-    <script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
-                }
-            });
-            alert(message);
+        var x = 0;
+        <script>
+
+                function selectrow(arg) {
+            var Thegrid = $("#grid").data("kendoGrid");
+            var item = Thegrid.dataItem(Thegrid.select());
+            x = item.ProjectID;
+   
+            alert("Project ID = " + x);
         }
-    }
-    </script>
 
+
+        </script>
+
+        Session["SelectedProjectId"] = null;
+        Session["SelectedProjectId"] = x;
     }
 }
 
-else{
+else {
 
     Response.Redirect("~/Account/Login");
 

@@ -16,9 +16,12 @@ namespace PCDCRSystem.Models
         }
 
         public IEnumerable<ProjectControlViewModel> Readproject()
-        {
-            return entities.ProjectControl_table.Select(control => new ProjectControlViewModel
-            {
+        {                         
+            //  يجب ان يكون المشروع فعال 
+            return entities.ProjectControl_table
+                        .Where (i=> i.Status !=  false )
+                        .Select(control => new ProjectControlViewModel
+                  {
                 ID = control.ID,
                 ProID = control.ProjectID,
                 UserID = control.UserID,
@@ -42,7 +45,8 @@ namespace PCDCRSystem.Models
         }
         public IEnumerable<ViewUserProjectControlViewModel> ReadprojectForUser()
         {
-            return entities.ProjectControl_table.Select(control => new ViewUserProjectControlViewModel
+            return entities.ProjectControl_table
+                     .Where(i => i.Status != false).Select(control => new ViewUserProjectControlViewModel
             {
                 ID = control.ID,
                 UserProjectID = control.ProjectID,
@@ -60,16 +64,28 @@ namespace PCDCRSystem.Models
 
         public void Createproject(ProjectControlViewModel control)
         {
-            var entity = new ProjectControl_table();
+            try
+            {
+                //  تم اضافة هذا الاستعلام لعدم تكرار المشروع للمستخدم
+                var project = entities.ProjectControl_table
+                             .Single(i => i.UserID == control.UserID 
+                                         && i.ProjectID == control.ProID);
+                control.ID = 0;
+            }
+            catch (Exception)
+            {
+                var entity = new ProjectControl_table();
 
-            entity.ProjectID = control.ProID;
-            entity.UserID = control.UserID;
-            entity.Status = control.Status;
-       
-            entities.ProjectControl_table.Add(entity);
-            entities.SaveChanges();
+                entity.ProjectID = control.ProID;
+                entity.UserID = control.UserID;
+                entity.Status = control.Status;
 
-            control.ID = entity.ID;
+                entities.ProjectControl_table.Add(entity);
+                entities.SaveChanges();
+
+                control.ID = entity.ID;
+            }
+     
         }
 
         public void Updateproject(ProjectControlViewModel control)
@@ -114,7 +130,9 @@ namespace PCDCRSystem.Models
 
         public IEnumerable<UserViewModel> GetUseres()
         {
-            return entities.Users_Table.Select(user => new UserViewModel
+            //  هنا كمان   تم التعديل على حالة المستخدم 
+            return entities.Users_Table
+                .Where(i => i.Status != false).Select(user => new UserViewModel
             {
                 UserID = user.ID,
                 FullName = user.FullName,
